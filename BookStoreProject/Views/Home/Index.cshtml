@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@{ ViewData["Title"] = "Home Page"; }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -10,5 +8,7 @@
 <form asp-controller="Suscripcion" asp-action="Suscribirse" method="post">
     <label for="Email">Suscribirse</label>
     <input type="email" name="Email" value="" />
-    <input type="submit" name="Enviar" value="" />
+    <input type="submit" name="Enviar" value="Suscribirse" />
 </form>
+
+

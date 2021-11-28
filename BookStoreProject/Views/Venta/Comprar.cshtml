@@ -1,0 +1,77 @@
+﻿@model BookStoreProject.Models.Venta
+
+@{
+    ViewData["Title"] = "Comprar";
+}
+
+<h1>Formulario de Compra</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Comprar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dni" class="control-label"></label>
+                <input asp-for="Dni" class="form-control" />
+                <span asp-validation-for="Dni" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Calle" class="control-label"></label>
+                <input asp-for="Calle" class="form-control" />
+                <span asp-validation-for="Calle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Altura" class="control-label"></label>
+                <input asp-for="Altura" class="form-control" />
+                <span asp-validation-for="Altura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Provincia" class="control-label"></label>
+                <input asp-for="Provincia" class="form-control" />
+                <span asp-validation-for="Provincia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tarjeta" class="control-label"></label>
+                <select name="Tarjeta">
+                    <option value="Credito">Crédito</option>
+                    <option value="Debito">Débito</option>
+                </select>
+                <!--<input asp-for="Tarjeta" class="form-control" />-->
+                <span asp-validation-for="Tarjeta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroTarjeta" class="control-label"></label>
+                <input asp-for="NumeroTarjeta" class="form-control" />
+                <span asp-validation-for="NumeroTarjeta" class="text-danger"></span>
+            </div>
+            <!--
+                <div class="form-group">
+            <label asp-for="LibroId" class="control-label"></label>
+            <select asp-for="LibroId" class="form-control" asp-items="ViewBag.LibroId"></select>
+    </div>
+                -->
+            <div class="form-group">
+                <input type="submit" value="Comprar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

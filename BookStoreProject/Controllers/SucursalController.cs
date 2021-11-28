@@ -21,10 +21,27 @@ namespace BookStoreProject.Controllers
             _context = context;
         }
 
+
         // GET: Sucursal
+        /**
         public async Task<IActionResult> Index()
         {
             return View(await _context.Sucursal.ToListAsync());
+        }
+        **/
+
+        public ActionResult Index(string searchString)
+        {
+
+            var sucursales = from s in _context.Sucursal
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                sucursales = sucursales.Where(s => s.Direccion.Contains(searchString));
+            }
+
+            return View(sucursales);
         }
 
         [Authorize(Roles = nameof(Rol.Administrador))]

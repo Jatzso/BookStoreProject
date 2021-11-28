@@ -1,5 +1,6 @@
 ﻿using BookStoreProject.Context;
 using BookStoreProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
+    [Authorize]
     public class SuscripcionController : Controller
     {
         private readonly BookStoreDBContext _context;

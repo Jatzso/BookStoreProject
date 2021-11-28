@@ -16,8 +16,9 @@ namespace BookStoreProject.Context
         public DbSet<BookStoreProject.Models.Sucursal> Sucursal { get; set; }
 
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Compra> Compras { get; set; }
-        public DbSet<Suscripcion> Suscripciones { get; set; }      
+       
+        public DbSet<Suscripcion> Suscripciones { get; set; }   
+        public DbSet<Venta> Ventas { get; set; }
                         
 
       

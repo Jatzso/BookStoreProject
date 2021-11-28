@@ -196,36 +196,14 @@ namespace BookStoreProject.Controllers
 
             return View(libro);
         }
-        [HttpGet]
-        public ActionResult Confirmar(int? id, string Titulo)
-        {
-            var libro = _context.Libros.First(l => l.Id == id);
-
-            if(libro != null)
-            {
-                var nuevaCompra = new Compra();
-                nuevaCompra.LibroId = libro.Id;
-                var name = User.Identity.Name;
-                var usuario = _context.Usuarios.First(u => u.User.Equals(name));
-                nuevaCompra.UsuarioId = usuario.Id;
-                _context.Compras.Add(nuevaCompra);
-                _context.Libros.Remove(libro);
-                _context.SaveChanges();
-
-            }
-            else
-            {
-                return NotFound();
-            }
-
-            return View("Home", "Index");
+        
 
             /***********************************************************/
 
 
         }
     }
-}
+
 
    
 
