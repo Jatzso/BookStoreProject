@@ -63,7 +63,7 @@ namespace BookStoreProject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     User = table.Column<string>(maxLength: 20, nullable: true),
                     Contraseña = table.Column<byte[]>(nullable: true),
-                    Nombre = table.Column<string>(maxLength: 50, nullable: true),
+                    Nombre = table.Column<string>(maxLength: 20, nullable: true),
                     Rol = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -72,46 +72,69 @@ namespace BookStoreProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Compras",
+                name: "Comentarios",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LibroId = table.Column<int>(nullable: false),
-                    UsuarioId = table.Column<int>(nullable: false)
+                    Comment = table.Column<string>(maxLength: 80, nullable: true),
+                    LibroId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Compras", x => x.Id);
+                    table.PrimaryKey("PK_Comentarios", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Compras_Libros_LibroId",
+                        name: "FK_Comentarios_Libros_LibroId",
                         column: x => x.LibroId,
                         principalTable: "Libros",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ventas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(nullable: false),
+                    Apellido = table.Column<string>(nullable: false),
+                    Dni = table.Column<int>(nullable: false),
+                    Calle = table.Column<string>(nullable: false),
+                    Altura = table.Column<int>(nullable: false),
+                    Provincia = table.Column<string>(nullable: false),
+                    Telefono = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Tarjeta = table.Column<string>(nullable: false),
+                    NumeroTarjeta = table.Column<int>(nullable: false),
+                    LibroId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ventas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Compras_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "Usuarios",
+                        name: "FK_Ventas_Libros_LibroId",
+                        column: x => x.LibroId,
+                        principalTable: "Libros",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Compras_LibroId",
-                table: "Compras",
+                name: "IX_Comentarios_LibroId",
+                table: "Comentarios",
                 column: "LibroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Compras_UsuarioId",
-                table: "Compras",
-                column: "UsuarioId");
+                name: "IX_Ventas_LibroId",
+                table: "Ventas",
+                column: "LibroId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Compras");
+                name: "Comentarios");
 
             migrationBuilder.DropTable(
                 name: "Sucursal");
@@ -120,10 +143,13 @@ namespace BookStoreProject.Migrations
                 name: "Suscripciones");
 
             migrationBuilder.DropTable(
-                name: "Libros");
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Ventas");
+
+            migrationBuilder.DropTable(
+                name: "Libros");
         }
     }
 }

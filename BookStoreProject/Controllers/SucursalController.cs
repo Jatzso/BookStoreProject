@@ -22,14 +22,6 @@ namespace BookStoreProject.Controllers
         }
 
 
-        // GET: Sucursal
-        /**
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Sucursal.ToListAsync());
-        }
-        **/
-
         public ActionResult Index(string searchString)
         {
 

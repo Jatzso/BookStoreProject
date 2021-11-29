@@ -4,46 +4,62 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Detalles</h1>
 
 <div>
-    <h4>Libro</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Titulo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Autor)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Autor)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Editorial)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Editorial)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Genero)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Genero)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Precio)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Precio)
+        <dd class="col-sm-10">
+            $@Html.DisplayFor(model => model.Precio)
         </dd>
     </dl>
 </div>
+
+@{ 
+    var cargarImagen = "http://localhost:52620/imagenes/" + @Model.Id + ".jpg";
+    
+} 
+<img src=@cargarImagen alt="Model.Titulo" />
+    
+<form asp-action="Comentar" asp-route-id="@Model.Id" method="post">
+    <label for="Comment">Comentar:</label><br />
+    <textarea name="Comment" rows="3" cols="50"></textarea><br />
+    <input type="submit" name="Comentar" value="Comentar" />
+</form>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-    <a asp-controller="Venta" asp-action="Comprar" asp-route-id="@Model.Id">Comprar</a>
+    @if (User.IsInRole(nameof(Rol.Administrador)))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+    }
+
+    <a asp-controller="Venta" asp-action="Comprar" asp-route-id="@Model.Id">Comprar</a><br />
+    <a asp-controller="Comentario" asp-action="Index" asp-route-id="@Model.Id">Ver comentarios</a><br />
+    <a asp-action="Index">Volver a la lista de libros</a>
 </div>

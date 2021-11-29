@@ -19,6 +19,27 @@ namespace BookStoreProject.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("BookStoreProject.Models.Comentario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(80)")
+                        .HasMaxLength(80);
+
+                    b.Property<int>("LibroId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LibroId");
+
+                    b.ToTable("Comentarios");
+                });
+
             modelBuilder.Entity("BookStoreProject.Models.Libro", b =>
                 {
                     b.Property<int>("Id")
@@ -110,8 +131,8 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<int>("Rol")
                         .HasColumnType("int");
@@ -146,6 +167,10 @@ namespace BookStoreProject.Migrations
                     b.Property<int>("Dni")
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("LibroId")
                         .HasColumnType("int");
 
@@ -164,11 +189,23 @@ namespace BookStoreProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Telefono")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LibroId");
 
                     b.ToTable("Ventas");
+                });
+
+            modelBuilder.Entity("BookStoreProject.Models.Comentario", b =>
+                {
+                    b.HasOne("BookStoreProject.Models.Libro", "Libro")
+                        .WithMany()
+                        .HasForeignKey("LibroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BookStoreProject.Models.Venta", b =>

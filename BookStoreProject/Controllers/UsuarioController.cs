@@ -119,7 +119,7 @@ namespace BookStoreProject.Controllers
                     if (seguridad.ValidarPass(pass))
                     {
                         usuario.Contraseña = seguridad.EncriptarPass(pass);
-                        usuario.Rol = Rol.Administrador;
+                        usuario.Rol = Rol.UsuarioComun;
                         _context.Add(usuario);
                         await _context.SaveChangesAsync();
                         return RedirectToAction(nameof(Ingresar));

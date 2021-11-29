@@ -21,8 +21,7 @@ namespace BookStoreProject.Controllers
             _context = context;
         }
 
-        //Busqueda prueba
-
+        //Buscador
         public ActionResult Index(string searchString)
         {
 
@@ -37,15 +36,6 @@ namespace BookStoreProject.Controllers
             return View(libros);
         }
 
-
-        //**************************************************
-        /*
-        // GET: Libro
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Libros.ToListAsync());
-        }
-        */
 
         // GET: Libro/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -64,7 +54,7 @@ namespace BookStoreProject.Controllers
 
             return View(libro);
         }
-
+       
         // GET: Libro/Create
         [Authorize(Roles = nameof(Rol.Administrador))]
         public IActionResult Create()
@@ -178,28 +168,21 @@ namespace BookStoreProject.Controllers
             return _context.Libros.Any(e => e.Id == id);
         }
 
-        /*************************************************************/
 
-        public async Task<IActionResult> Comprar(int? id)
+        public ActionResult Comentar(int Id, string Comment)
         {
-            if (id == null)
+            if (Comment != "")
             {
-                return NotFound();
+                var nuevoComentario = new Comentario();
+                nuevoComentario.Comment = Comment;
+                nuevoComentario.LibroId = Id;
+                var libro = _context.Libros.Find(Id);
+                _context.Comentarios.Add(nuevoComentario);
+                _context.SaveChanges();
             }
-
-            var libro = await _context.Libros
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (libro == null)
-            {
-                return NotFound();
-            }
-
-            return View(libro);
+            return RedirectToAction("Index", "Libro");
         }
         
-
-            /***********************************************************/
-
 
         }
     }

@@ -19,6 +19,8 @@ namespace BookStoreProject.Context
        
         public DbSet<Suscripcion> Suscripciones { get; set; }   
         public DbSet<Venta> Ventas { get; set; }
+        
+        public DbSet<Comentario>Comentarios { get; set; }
                         
 
       

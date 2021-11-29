@@ -19,7 +19,7 @@ namespace BookStoreProject.Models
         [Required(ErrorMessage = "El campo es requerido")]
         public string Apellido { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "El campo es requerido")]
         [Range(1000000, 990000000)]
         public int Dni { get; set; }
         
@@ -31,14 +31,24 @@ namespace BookStoreProject.Models
 
         [Required]
         public string Provincia { get; set; }
+        
+        [Required(ErrorMessage = "El campo es requerido")]
+        [Phone]
+        public int Telefono { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo es requerido")]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "El campo es requerido")]
         public string Tarjeta { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo es requerido")]
+        [CreditCard]
         public int NumeroTarjeta { get; set; }
 
         //Relaciones con otras entidades
+       
         [ForeignKey(nameof(Libro))]
         public int LibroId { get; set; }
         public Libro Libro { get; set; }

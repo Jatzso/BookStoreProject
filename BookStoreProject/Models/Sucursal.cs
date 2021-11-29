@@ -20,9 +20,12 @@ namespace BookStoreProject.Models
         public string Direccion { get; set; }
         
         [Required(ErrorMessage = "Este campo es requerido")]
+        [Phone]
         public string Telefono { get; set; }
         
         [Required(ErrorMessage = "Este campo es requerido")]
+        [EmailAddress]
+        [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
         
         [Required(ErrorMessage = "Este campo es requerido")]

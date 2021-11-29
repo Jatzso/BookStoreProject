@@ -1,32 +1,40 @@
-﻿using BookStoreProject.Context;
-using BookStoreProject.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using BookStoreProject.Context;
+using BookStoreProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookStoreProject.Controllers
 {
     [Authorize]
-    public class SuscripcionController : Controller
+    public class ComentarioController : Controller
     {
         private readonly BookStoreDBContext _context;
 
-        public SuscripcionController(BookStoreDBContext context)
+        public ComentarioController(BookStoreDBContext context)
         {
             _context = context;
         }
 
-        // GET: Suscripcion
-        [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Index()
+        //GET
+        public ActionResult Index(int Id)
         {
-            return View(await _context.Suscripciones.ToListAsync());
+
+            var comentarios = from c in _context.Comentarios
+                         select c;
+
+             comentarios = comentarios.Where(c => c.LibroId == Id);
+            
+            return View(comentarios);
         }
 
-        // GET: Suscripcion/Details/5
         [Authorize(Roles = nameof(Rol.Administrador))]
+        // GET: Comentario/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,41 +42,44 @@ namespace BookStoreProject.Controllers
                 return NotFound();
             }
 
-            var suscripcion = await _context.Suscripciones
+            var comentario = await _context.Comentarios
+                .Include(c => c.Libro)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (suscripcion == null)
+            if (comentario == null)
             {
                 return NotFound();
             }
 
-            return View(suscripcion);
+            return View(comentario);
         }
 
-        // GET: Suscripcion/Create
+        // GET: Comentario/Create
         [Authorize(Roles = nameof(Rol.Administrador))]
         public IActionResult Create()
         {
+            ViewData["LibroId"] = new SelectList(_context.Libros, "Id", "Autor");
             return View();
         }
 
-        // POST: Suscripcion/Create
+        // POST: Comentario/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Create([Bind("Id,Email")] Suscripcion suscripcion)
+        public async Task<IActionResult> Create([Bind("Id,Comment,LibroId")] Comentario comentario)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(suscripcion);
+                _context.Add(comentario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(suscripcion);
+            ViewData["LibroId"] = new SelectList(_context.Libros, "Id", "Autor", comentario.LibroId);
+            return View(comentario);
         }
 
-        // GET: Suscripcion/Edit/5
+        // GET: Comentario/Edit/5
         [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -77,23 +88,24 @@ namespace BookStoreProject.Controllers
                 return NotFound();
             }
 
-            var suscripcion = await _context.Suscripciones.FindAsync(id);
-            if (suscripcion == null)
+            var comentario = await _context.Comentarios.FindAsync(id);
+            if (comentario == null)
             {
                 return NotFound();
             }
-            return View(suscripcion);
+            ViewData["LibroId"] = new SelectList(_context.Libros, "Id", "Autor", comentario.LibroId);
+            return View(comentario);
         }
 
-        // POST: Suscripcion/Edit/5
+        // POST: Comentario/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Email")] Suscripcion suscripcion)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Comment,LibroId")] Comentario comentario)
         {
-            if (id != suscripcion.Id)
+            if (id != comentario.Id)
             {
                 return NotFound();
             }
@@ -102,12 +114,12 @@ namespace BookStoreProject.Controllers
             {
                 try
                 {
-                    _context.Update(suscripcion);
+                    _context.Update(comentario);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SuscripcionExists(suscripcion.Id))
+                    if (!ComentarioExists(comentario.Id))
                     {
                         return NotFound();
                     }
@@ -118,10 +130,11 @@ namespace BookStoreProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(suscripcion);
+            ViewData["LibroId"] = new SelectList(_context.Libros, "Id", "Autor", comentario.LibroId);
+            return View(comentario);
         }
 
-        // GET: Suscripcion/Delete/5
+        // GET: Comentario/Delete/5
         [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -130,46 +143,32 @@ namespace BookStoreProject.Controllers
                 return NotFound();
             }
 
-            var suscripcion = await _context.Suscripciones
+            var comentario = await _context.Comentarios
+                .Include(c => c.Libro)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (suscripcion == null)
+            if (comentario == null)
             {
                 return NotFound();
             }
 
-            return View(suscripcion);
+            return View(comentario);
         }
 
-        // POST: Suscripcion/Delete/5
+        // POST: Comentario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var suscripcion = await _context.Suscripciones.FindAsync(id);
-            _context.Suscripciones.Remove(suscripcion);
+            var comentario = await _context.Comentarios.FindAsync(id);
+            _context.Comentarios.Remove(comentario);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SuscripcionExists(int id)
+        private bool ComentarioExists(int id)
         {
-            return _context.Suscripciones.Any(e => e.Id == id);
+            return _context.Comentarios.Any(e => e.Id == id);
         }
-
-        [HttpPost]
-        public ActionResult Suscribirse(string Email)
-        {    
-            if(Email != null)
-            {
-
-                var nuevaSuscripcion = new Suscripcion();
-                nuevaSuscripcion.Email = Email;
-                _context.Suscripciones.Add(nuevaSuscripcion);
-                _context.SaveChanges();
-            }
-            return RedirectToAction("Index", "Home");
-        }
-
     }
 }

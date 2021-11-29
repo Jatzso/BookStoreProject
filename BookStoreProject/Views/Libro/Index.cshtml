@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista de libros</h1>
 
 <p>
     @if (User.IsInRole(nameof(Rol.Administrador)))
     {
-       <a asp-action="Create">Create New</a>
+       <a asp-action="Create">Agregar nuevo libro</a>
     }
 
     <!--***************************************************-->
@@ -18,7 +18,7 @@
     @using (Html.BeginForm())
     {
 <p>
-    Title: @Html.TextBox("SearchString")
+    Titulo: @Html.TextBox("SearchString")
     <input type="submit" value="Buscar" />
 </p>
     
@@ -66,19 +66,19 @@
                         @Html.DisplayFor(modelItem => item.Genero)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Precio)
+                        $ @Html.DisplayFor(modelItem => item.Precio)
                     </td>
                     <td>
                         @if (User.IsInRole(nameof(Rol.Administrador)))
                         {
-                           <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                           <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                           <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                           <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                           <a asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
+                           <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                           
                         }
                         else
                           {
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
                             
                           }
                         
