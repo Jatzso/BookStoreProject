@@ -25,23 +25,28 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
-                                    {
-                                         <li class="nav-item">
-                                              <a class="nav-link text-dark" asp-area="" asp-controller="Libro" asp-action="Index">Libros</a>
-                                             </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Sucursal" asp-action="Index">Sucursales</a>
-                                        </li>
-                                                            @if (User.Identity.IsAuthenticated && User.IsInRole(nameof(Rol.Administrador)))
-                                                            {
+                        {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Libro" asp-action="Index">Libros</a>
+                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Sucursal" asp-action="Index">Sucursales</a>
+                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Suscripcion" asp-action="Suscribirse">Suscribirse</a>
+                                                    </li>
 
-                                        <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-area="" asp-controller="Suscripcion" asp-action="Index">Suscripciones</a>
-                                        </li>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link text-dark" asp-area="" asp-controller="Venta" asp-action="Index">Ventas</a>
-                                                                </li>}}
-                                                </ul>
+                                                                    @if (User.Identity.IsAuthenticated && User.IsInRole(nameof(Rol.Administrador)))
+                                                                    {
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Suscripcion" asp-action="Index">Suscripciones</a>
+                                                    </li>
+                                                                        <li class="nav-item">
+                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Venta" asp-action="Index">Ventas</a>
+                                                                        </li>
+}}
+                    </ul>
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {

@@ -177,6 +177,11 @@ namespace BookStoreProject.Controllers
                 nuevoComentario.Comment = Comment;
                 nuevoComentario.LibroId = Id;
                 var libro = _context.Libros.Find(Id);
+                nuevoComentario.Libro = libro;
+                var userName = User.Identity.Name;
+                var user = _context.Usuarios.FirstOrDefault(u => u.User == userName);
+                nuevoComentario.Usuario = user;
+                nuevoComentario.UsuarioId = user.Id;
                 _context.Comentarios.Add(nuevoComentario);
                 _context.SaveChanges();
             }

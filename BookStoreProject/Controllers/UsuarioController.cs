@@ -115,19 +115,27 @@ namespace BookStoreProject.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    //usuario.Id = Guid.NewGuid();
-                    if (seguridad.ValidarPass(pass))
+                    if(!_context.Usuarios.Any(u => u.User == usuario.User))
                     {
-                        usuario.Contraseña = seguridad.EncriptarPass(pass);
-                        usuario.Rol = Rol.UsuarioComun;
-                        _context.Add(usuario);
-                        await _context.SaveChangesAsync();
-                        return RedirectToAction(nameof(Ingresar));
+                        //usuario.Id = Guid.NewGuid();
+                             if (seguridad.ValidarPass(pass))
+                             {
+                                  usuario.Contraseña = seguridad.EncriptarPass(pass);
+                                  usuario.Rol = Rol.UsuarioComun;
+                                 _context.Add(usuario);
+                                await _context.SaveChangesAsync();
+                                return RedirectToAction(nameof(Ingresar));
+                             }
+                             else
+                             {
+                                ModelState.AddModelError(nameof(Usuario.Contraseña), "La contraseña no cumple con los requisitos");
+                             }
                     }
                     else
                     {
-                        ModelState.AddModelError(nameof(Usuario.Contraseña), "La contraseña no cumple con los requisitos");
+                         ModelState.AddModelError(nameof(Usuario.User), "El usuario ya existe");
                     }
+                    
                 }
                 return View(usuario);
             }

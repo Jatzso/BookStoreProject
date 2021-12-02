@@ -7,11 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookStoreProject.Context;
 using BookStoreProject.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace BookStoreProject.Controllers
 {
-    [Authorize]
     public class ComentarioController : Controller
     {
         private readonly BookStoreDBContext _context;
@@ -21,19 +19,13 @@ namespace BookStoreProject.Controllers
             _context = context;
         }
 
-        //GET
-        public ActionResult Index(int Id)
+        // GET: Comentario
+        public async Task<IActionResult> Index()
         {
-
-            var comentarios = from c in _context.Comentarios
-                         select c;
-
-             comentarios = comentarios.Where(c => c.LibroId == Id);
-            
-            return View(comentarios);
+            var bookStoreDBContext = _context.Comentarios.Include(c => c.Libro).Include(c => c.Usuario);
+            return View(await bookStoreDBContext.ToListAsync());
         }
 
-        [Authorize(Roles = nameof(Rol.Administrador))]
         // GET: Comentario/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -44,6 +36,7 @@ namespace BookStoreProject.Controllers
 
             var comentario = await _context.Comentarios
                 .Include(c => c.Libro)
+                .Include(c => c.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (comentario == null)
             {
@@ -54,10 +47,10 @@ namespace BookStoreProject.Controllers
         }
 
         // GET: Comentario/Create
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public IActionResult Create()
         {
             ViewData["LibroId"] = new SelectList(_context.Libros, "Id", "Autor");
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id");
             return View();
         }
 
@@ -66,8 +59,7 @@ namespace BookStoreProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Create([Bind("Id,Comment,LibroId")] Comentario comentario)
+        public async Task<IActionResult> Create([Bind("Id,Comment,LibroId,UsuarioId")] Comentario comentario)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +68,11 @@ namespace BookStoreProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LibroId"] = new SelectList(_context.Libros, "Id", "Autor", comentario.LibroId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", comentario.UsuarioId);
             return View(comentario);
         }
 
         // GET: Comentario/Edit/5
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -94,6 +86,7 @@ namespace BookStoreProject.Controllers
                 return NotFound();
             }
             ViewData["LibroId"] = new SelectList(_context.Libros, "Id", "Autor", comentario.LibroId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", comentario.UsuarioId);
             return View(comentario);
         }
 
@@ -102,8 +95,7 @@ namespace BookStoreProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Comment,LibroId")] Comentario comentario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Comment,LibroId,UsuarioId")] Comentario comentario)
         {
             if (id != comentario.Id)
             {
@@ -131,11 +123,11 @@ namespace BookStoreProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LibroId"] = new SelectList(_context.Libros, "Id", "Autor", comentario.LibroId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", comentario.UsuarioId);
             return View(comentario);
         }
 
         // GET: Comentario/Delete/5
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,6 +137,7 @@ namespace BookStoreProject.Controllers
 
             var comentario = await _context.Comentarios
                 .Include(c => c.Libro)
+                .Include(c => c.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (comentario == null)
             {
@@ -157,7 +150,6 @@ namespace BookStoreProject.Controllers
         // POST: Comentario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var comentario = await _context.Comentarios.FindAsync(id);

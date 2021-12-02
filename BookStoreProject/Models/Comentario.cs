@@ -21,5 +21,9 @@ namespace BookStoreProject.Models
         [ForeignKey(nameof(Libro))]
         public int LibroId { get; set; }
         public Libro Libro { get; set; }
+
+        [ForeignKey(nameof(Usuario))]
+        public int UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
     }
 }

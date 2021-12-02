@@ -43,19 +43,6 @@ namespace BookStoreProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Suscripciones",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Suscripciones", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
                 {
@@ -69,26 +56,6 @@ namespace BookStoreProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Comentarios",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Comment = table.Column<string>(maxLength: 80, nullable: true),
-                    LibroId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comentarios", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Comentarios_Libros_LibroId",
-                        column: x => x.LibroId,
-                        principalTable: "Libros",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -120,10 +87,67 @@ namespace BookStoreProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Comentarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Comment = table.Column<string>(maxLength: 80, nullable: true),
+                    LibroId = table.Column<int>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comentarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comentarios_Libros_LibroId",
+                        column: x => x.LibroId,
+                        principalTable: "Libros",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Comentarios_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Suscripciones",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Suscripciones", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Suscripciones_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Comentarios_LibroId",
                 table: "Comentarios",
                 column: "LibroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comentarios_UsuarioId",
+                table: "Comentarios",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Suscripciones_UsuarioId",
+                table: "Suscripciones",
+                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ventas_LibroId",
@@ -143,10 +167,10 @@ namespace BookStoreProject.Migrations
                 name: "Suscripciones");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Ventas");
 
             migrationBuilder.DropTable(
-                name: "Ventas");
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Libros");

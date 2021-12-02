@@ -33,9 +33,14 @@ namespace BookStoreProject.Migrations
                     b.Property<int>("LibroId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LibroId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Comentarios");
                 });
@@ -113,9 +118,15 @@ namespace BookStoreProject.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Suscripciones");
                 });
@@ -204,6 +215,21 @@ namespace BookStoreProject.Migrations
                     b.HasOne("BookStoreProject.Models.Libro", "Libro")
                         .WithMany()
                         .HasForeignKey("LibroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookStoreProject.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BookStoreProject.Models.Suscripcion", b =>
+                {
+                    b.HasOne("BookStoreProject.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

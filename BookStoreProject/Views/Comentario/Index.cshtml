@@ -4,36 +4,38 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Comentarios</h1>
+<h1>Index</h1>
 
 <p>
-    @if (User.IsInRole(nameof(Rol.Administrador)))
-    {
-        <a asp-action="Create">Crear nuevo comentario</a>
-    }
-
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    "@Html.DisplayFor(modelItem => item.Comment)"
-                </td>
-                <td>
-                    @if (User.IsInRole(nameof(Rol.Administrador)))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id"> Eliminar</a>
-                    }
-
-                </td>
-            </tr>
-        }
-
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.User)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-
-<a asp-controller="Libro" asp-action="Index">Volver a la lista de libros</a>

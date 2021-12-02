@@ -1,14 +1,15 @@
-﻿using BookStoreProject.Context;
-using BookStoreProject.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using BookStoreProject.Context;
+using BookStoreProject.Models;
 
 namespace BookStoreProject.Controllers
 {
-    [Authorize]
     public class SuscripcionController : Controller
     {
         private readonly BookStoreDBContext _context;
@@ -19,14 +20,13 @@ namespace BookStoreProject.Controllers
         }
 
         // GET: Suscripcion
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Suscripciones.ToListAsync());
+            var bookStoreDBContext = _context.Suscripciones.Include(s => s.Usuario);
+            return View(await bookStoreDBContext.ToListAsync());
         }
 
         // GET: Suscripcion/Details/5
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,6 +35,7 @@ namespace BookStoreProject.Controllers
             }
 
             var suscripcion = await _context.Suscripciones
+                .Include(s => s.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (suscripcion == null)
             {
@@ -45,9 +46,9 @@ namespace BookStoreProject.Controllers
         }
 
         // GET: Suscripcion/Create
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public IActionResult Create()
         {
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id");
             return View();
         }
 
@@ -56,8 +57,7 @@ namespace BookStoreProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Create([Bind("Id,Email")] Suscripcion suscripcion)
+        public async Task<IActionResult> Create([Bind("Id,Email,UsuarioId")] Suscripcion suscripcion)
         {
             if (ModelState.IsValid)
             {
@@ -65,11 +65,11 @@ namespace BookStoreProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", suscripcion.UsuarioId);
             return View(suscripcion);
         }
 
         // GET: Suscripcion/Edit/5
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,6 +82,7 @@ namespace BookStoreProject.Controllers
             {
                 return NotFound();
             }
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", suscripcion.UsuarioId);
             return View(suscripcion);
         }
 
@@ -90,8 +91,7 @@ namespace BookStoreProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Email")] Suscripcion suscripcion)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Email,UsuarioId")] Suscripcion suscripcion)
         {
             if (id != suscripcion.Id)
             {
@@ -118,11 +118,11 @@ namespace BookStoreProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", suscripcion.UsuarioId);
             return View(suscripcion);
         }
 
         // GET: Suscripcion/Delete/5
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,6 +131,7 @@ namespace BookStoreProject.Controllers
             }
 
             var suscripcion = await _context.Suscripciones
+                .Include(s => s.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (suscripcion == null)
             {
@@ -143,7 +144,6 @@ namespace BookStoreProject.Controllers
         // POST: Suscripcion/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var suscripcion = await _context.Suscripciones.FindAsync(id);
@@ -157,19 +157,33 @@ namespace BookStoreProject.Controllers
             return _context.Suscripciones.Any(e => e.Id == id);
         }
 
-        [HttpPost]
-        public ActionResult Suscribirse(string Email)
-        {    
-            if(Email != null)
-            {
-
-                var nuevaSuscripcion = new Suscripcion();
-                nuevaSuscripcion.Email = Email;
-                _context.Suscripciones.Add(nuevaSuscripcion);
-                _context.SaveChanges();
-            }
-            return RedirectToAction("Index", "Home");
+        public ActionResult Suscribirse()
+        {
+            return View();
         }
 
+        [HttpPost]
+        public ActionResult Suscribirse(Suscripcion suscripcion)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!_context.Suscripciones.Any(s => s.Email == suscripcion.Email))
+                {
+                    var userName = User.Identity.Name;
+                    var user = _context.Usuarios.FirstOrDefault(u => u.User == userName);
+                    suscripcion.UsuarioId = user.Id;
+                    suscripcion.Usuario = user;
+                    _context.Suscripciones.Add(suscripcion);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(Suscripcion.Email), "El correo ya se encuentra suscripto");
+                }
+                
+            }
+            return View();
+        }
     }
 }
