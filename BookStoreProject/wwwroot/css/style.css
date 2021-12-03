@@ -1,13 +1,11 @@
-﻿
-body, html {
+﻿body, html {
     height: 100%;
 }
 
 .fondo {
-    background-image: url(~/imagenes/accesoDenegado.jpg);
+    background-image: url(accesoDenegado.jpg);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-

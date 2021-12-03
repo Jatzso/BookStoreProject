@@ -173,6 +173,7 @@ namespace BookStoreProject.Controllers
                     var user = _context.Usuarios.FirstOrDefault(u => u.User == userName);
                     suscripcion.UsuarioId = user.Id;
                     suscripcion.Usuario = user;
+                    suscripcion.Fecha = DateTime.Now;
                     _context.Suscripciones.Add(suscripcion);
                     _context.SaveChanges();
                     return RedirectToAction("Index", "Home");

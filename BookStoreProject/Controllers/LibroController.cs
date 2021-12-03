@@ -171,7 +171,9 @@ namespace BookStoreProject.Controllers
 
         public ActionResult Comentar(int Id, string Comment)
         {
-            if (Comment != "")
+            var idReturn = Id;
+
+            if (Comment != null)
             {
                 var nuevoComentario = new Comentario();
                 nuevoComentario.Comment = Comment;
@@ -182,6 +184,7 @@ namespace BookStoreProject.Controllers
                 var user = _context.Usuarios.FirstOrDefault(u => u.User == userName);
                 nuevoComentario.Usuario = user;
                 nuevoComentario.UsuarioId = user.Id;
+                nuevoComentario.Fecha = DateTime.Now;
                 _context.Comentarios.Add(nuevoComentario);
                 _context.SaveChanges();
             }

@@ -14,6 +14,9 @@ namespace BookStoreProject.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
+        public DateTime Fecha { get; set; }
+
         [EmailAddress] 
         [Required(ErrorMessage = "El campo es requerido")]
         public string Email { get; set; }

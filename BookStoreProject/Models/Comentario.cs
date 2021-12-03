@@ -13,6 +13,9 @@ namespace BookStoreProject.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
+        public DateTime Fecha { get; set; }
+
         [MaxLength(80, ErrorMessage = "La longitud máxima es {1}")]
         public string Comment { get; set; }
 

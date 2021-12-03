@@ -26,6 +26,8 @@ namespace BookStoreProject.Controllers
         public async Task<IActionResult> Index()
         {
             var bookStoreDBContext = _context.Ventas.Include(v => v.Libro);
+            ViewBag.TotalVentas = _context.Ventas.Count();
+            ViewBag.TotalVendido = _context.Ventas.Select(v => v.Libro.Precio).Sum();
             return View(await bookStoreDBContext.ToListAsync());
         }
 
@@ -167,15 +169,15 @@ namespace BookStoreProject.Controllers
             return _context.Ventas.Any(e => e.Id == id);
         }
 
-        
+
         public ActionResult Comprar()
         {
             return View();
-        } 
+        }
 
         [HttpPost]
-        public ActionResult Comprar(int Id, string Nombre, string Apellido, int Dni, string Calle, int Altura, 
-            string Provincia,int Telefono, string Email, string Tarjeta, int NumeroTarjeta)
+        public ActionResult Comprar(int Id, string Nombre, string Apellido, int Dni, string Calle, int Altura,
+            string Provincia, int Telefono, string Email, string Tarjeta, int NumeroTarjeta)
         {
             var venta = new Venta();
             venta.Nombre = Nombre;
@@ -195,5 +197,6 @@ namespace BookStoreProject.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
     }
 }
