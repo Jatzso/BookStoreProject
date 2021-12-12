@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - BookStoreProject</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/prueba.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -26,51 +27,51 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Libro" asp-action="Index">Libros</a>
-                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Sucursal" asp-action="Index">Sucursales</a>
-                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Suscripcion" asp-action="Suscribirse">Suscribirse</a>
-                                                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Libro" asp-action="Index">Libros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sucursal" asp-action="Index">Sucursales</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Suscripcion" asp-action="Suscribirse">Suscribirse</a>
+                            </li>
 
-                                                                    @if (User.Identity.IsAuthenticated && User.IsInRole(nameof(Rol.Administrador)))
-                                                                    {
+                            @if (User.Identity.IsAuthenticated && User.IsInRole(nameof(Rol.Administrador)))
+                            {
 
-                                                    <li class="nav-item">
-                                                        <a class="nav-link text-dark" asp-area="" asp-controller="Suscripcion" asp-action="Index">Suscripciones</a>
-                                                    </li>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link text-dark" asp-area="" asp-controller="Venta" asp-action="Index">Ventas</a>
-                                                                        </li>
-}}
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Suscripcion" asp-action="Index">Suscripciones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Venta" asp-action="Index">Ventas</a>
+                                </li>
+                            }}
                     </ul>
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
-    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <ul class="navbar-nav flex-grow-1">
-            <li class="nav-item float-right">
-                <a class="nav-link text-success font-italic" asp-area="">@User.FindFirstValue(ClaimTypes.GivenName)</a>
-            </li>
-            <li class="nav-item float-right">
-                <form asp-controller="Usuario" asp-action="Salir" method="post">
-                    <button type="submit" class="nav-link text-danger">Salir</button>
-                </form>
-            </li>
-        </ul>
-    </div> }
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item float-right">
+                                <a class="nav-link text-success font-italic" asp-area="">@User.FindFirstValue(ClaimTypes.GivenName)</a>
+                            </li>
+                            <li class="nav-item float-right">
+                                <form asp-controller="Usuario" asp-action="Salir" method="post">
+                                    <button type="submit" class="nav-link text-danger">Salir</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div> }
                 else
                 {
-    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <ul class="navbar-nav flex-grow-1">
-            <li class="nav-item">
-                <a class="nav-link text-warning border border-primary bg-light" asp-area="" asp-controller="Usuario" asp-action="Ingresar">Ingresar</a>
-            </li>
-        </ul>
-    </div>}
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-warning border border-primary bg-light" asp-area="" asp-controller="Usuario" asp-action="Ingresar">Ingresar</a>
+                            </li>
+                        </ul>
+                    </div>}
             </div>
         </nav>
     </header>
@@ -82,7 +83,18 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - MVC_Entity_Framework - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="redes_conteiner">
+                <ul class="redes">
+                    <li><a href="https://www.instagram.com/" target="_blank"><img class="red" src="~/imagenes/instagramPic.jpg" alt="Instagram" /></a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank"><img class="red" src="~/imagenes/facebookPic.jpg" alt="Facebook" /></a></li>
+                    <li><a href="https://www.twitter.com/" target="_blank"><img class="red" src="~/imagenes/twitterPic.jpg" alt="Twitter" /></a></li>
+                    <li><p> &copy; 2021 - Book Store Project - TODOS LOS DERECHOS RESERVADOS -</p></li>
+                    <li><img class="red" src="~/imagenes/visa.jpg" alt="Tarjeta Visa" /></li>
+                    <li><img class="red" src="~/imagenes/mastercard.jpg" alt="Tarjeta Visa" /></li>
+                    <li><img class="red" src="~/imagenes/cabal.jpg" alt="Tarjeta Visa" /></li>
+                    <li><img class="red" src="~/imagenes/nativa.jpg" alt="Tarjeta Visa" /></li>
+                </ul>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -71,7 +71,7 @@
                     @Html.DisplayFor(modelItem => item.Libro.Titulo)
                 </td>
                 <td>
-                   $ @Html.DisplayFor(modelItem => item.Libro.Precio)
+                    $ @Html.DisplayFor(modelItem => item.Libro.Precio)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
@@ -85,3 +85,4 @@
 
 <p>Ventas:</p> @ViewBag.TotalVentas
 <p>Total:</p> @ViewBag.TotalVendido
+

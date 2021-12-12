@@ -31,6 +31,7 @@ namespace BookStoreProject.Controllers
             return View(await bookStoreDBContext.ToListAsync());
         }
 
+
         // GET: Venta/Details/5
         [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Details(int? id)

@@ -1,0 +1,104 @@
+﻿.slider {
+    width: 95%;
+    margin: auto;
+    overflow: hidden;
+}
+
+    .slider ul {
+        display: flex;
+        padding: 0;
+        width: 400%;
+        animation: cambio 15s infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in;
+    }
+
+    .slider li {
+        width: 100%;
+        list-style: none;
+    }
+
+.slide img {
+    width: 100%;
+}
+
+@keyframes cambio {
+    0% { 
+        margin-left: 0; 
+
+    }
+
+    20% {
+        margin-left: 0;
+    }
+
+    25% {
+        margin-left: -100%;
+    }
+
+    45% {
+        margin-left: -100%;
+    }
+
+    50% {
+        margin-left: -200%;
+    }
+
+    70% {
+        margin-left: -200%;
+    }
+
+    75% {
+        margin-left: -300%;
+    }
+
+    100% {
+        margin-left: -300%;
+    }
+}
+
+.form-group{
+    padding:90px;
+}
+
+/*Header1*/
+#header1 .logo{
+    font-size:40px;
+}
+#header1 p{
+    display:inline;
+}
+
+#header1 form {
+    display:inline;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+/**Footer Redes*/
+.redes {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+.redes li p {
+    margin-left: 20px;
+}
+
+.red {
+    width: 60px;
+    height: 60px;
+    margin-top:5px;
+}
+
+.red:hover {
+    width:  80px;
+    height: 80px;
+}
+
+.redes li p {
+    margin-left: 100px;
+    margin-right: 100px;
+}
