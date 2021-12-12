@@ -1,4 +1,5 @@
-﻿.slider {
+﻿/*Slider*/
+.slider {
     width: 95%;
     margin: auto;
     overflow: hidden;
@@ -8,6 +9,7 @@
         display: flex;
         padding: 0;
         width: 400%;
+        margin-left:0px;
         animation: cambio 15s infinite;
         animation-direction: alternate;
         animation-timing-function: ease-in;
@@ -18,8 +20,13 @@
         list-style: none;
     }
 
-.slide img {
+.slider img {
     width: 100%;
+}
+
+.sliderPic {
+    height:500px;
+    width: 300px;
 }
 
 @keyframes cambio {
@@ -73,6 +80,10 @@
     display:inline;
     margin-left: 200px;
     margin-right: 200px;
+}
+
+#ingresar {
+    margin-left: 500px;
 }
 
 /**Footer Redes*/

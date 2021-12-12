@@ -65,7 +65,7 @@ body {
   margin-left: 5%;
 }
 .footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 90%;
     white-space: nowrap;
