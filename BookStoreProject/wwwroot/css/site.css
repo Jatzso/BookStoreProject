@@ -8,8 +8,18 @@ a.navbar-brand {
 }
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.func {
+  color: black;
+  font-family:Verdana;
+  padding:22px 10px 22px 10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.func:hover {
+    background-color:mediumaquamarine;
+    color:white;
+    text-decoration:none;
 }
 
 .btn-primary {
@@ -28,6 +38,7 @@ a {
 -------------------------------------------------- */
 html {
   font-size: 14px;
+  background-color:lightgray;
 }
 @media (min-width: 768px) {
   html {
@@ -60,7 +71,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 0px;
   margin-right: 5%;
   margin-left: 5%;
 }
