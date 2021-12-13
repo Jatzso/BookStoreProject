@@ -22,15 +22,15 @@ namespace BookStoreProject.Controllers
         }
 
 
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string cadenaBuscada)
         {
 
             var sucursales = from s in _context.Sucursal
                          select s;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(cadenaBuscada))
             {
-                sucursales = sucursales.Where(s => s.Direccion.Contains(searchString));
+                sucursales = sucursales.Where(s => s.Direccion.Contains(cadenaBuscada));
             }
 
             return View(sucursales);

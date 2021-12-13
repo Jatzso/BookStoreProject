@@ -4,8 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista de libros</h1>
-
 <p>
     @if (User.IsInRole(nameof(Rol.Administrador)))
     {
@@ -18,8 +16,17 @@
     @using (Html.BeginForm())
     {
 <p>
-    Titulo: @Html.TextBox("SearchString")
-    <input type="submit" value="Buscar" />
+    <!--@Html.TextBox("SearchString")-->
+    <input class="buscador" id="SearchString" name="SearchString" type="text" value="" placeholder="Titulo de la obra..."/>
+    <input class="buscar" type="submit" value="Buscar"  placeholder="Titulo de la obra"/>
+    @if(Model.Count() < 1)
+                {
+                    <p class="notFound">¡Lo sentimos, no se ha encontrado nigún libro!</p>
+                }
+                else
+                {
+                    <p>Resultados: @Model.Count()</p>
+                }
 </p>
     
 }

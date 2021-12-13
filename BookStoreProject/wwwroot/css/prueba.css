@@ -119,3 +119,32 @@
     margin-left: 135px;
     margin-right: 135px;
 }
+
+/*Buscador*/
+form p {
+    font-family: Verdana;
+    font-size:20px;
+}
+
+.notFound {
+    color: red;
+
+}
+
+.buscar {
+    background-color:aquamarine;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.buscar:hover {
+    background-color:mediumaquamarine;
+    color: white;
+}
+
+.buscador {
+    width: 1000px;
+    border-color: black;
+    border-radius: 5px;
+}
+
