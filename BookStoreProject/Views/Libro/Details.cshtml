@@ -4,10 +4,13 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Detalles</h1>
+@{
+    var cargarImagen = "http://localhost:52620/imagenes/" + @Model.Id + ".jpg";
 
-<div>
-    <hr />
+}
+<img class="libro" src=@cargarImagen alt="Model.Titulo" />
+
+<div class="detalle">
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Titulo)
@@ -42,16 +45,9 @@
     </dl>
 </div>
 
-@{ 
-    var cargarImagen = "http://localhost:52620/imagenes/" + @Model.Id + ".jpg";
-    
-} 
-<img src=@cargarImagen alt="Model.Titulo" />
-    
 <form asp-action="Comentar" asp-route-id="@Model.Id" method="post">
-    <label for="Comment">Comentar:</label><br />
-    <textarea name="Comment" rows="3" cols="50" placeholder="Escriba un comentario"></textarea><br />
-    <input type="submit" name="Comentar" value="Comentar" />
+    <textarea id="campoComentario" name="Comment" rows="3" cols="100" placeholder="Escriba un comentario"></textarea><br />
+    <input id="btnComentar" type="submit" name="Comentar" value="Comentar" />
 </form>
 <div>
     @if (User.IsInRole(nameof(Rol.Administrador)))
@@ -59,7 +55,6 @@
         <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
     }
 
-    <a asp-controller="Venta" asp-action="Comprar" asp-route-id="@Model.Id">Comprar</a><br />
-    <a asp-controller="Comentario" asp-action="Index" asp-route-id="@Model.Id">Ver comentarios</a><br />
-    <a asp-action="Index">Volver a la lista de libros</a>
+    <a class="btnCompra" asp-controller="Venta" asp-action="Comprar" asp-route-id="@Model.Id">Comprar</a><br />
+    <a class="btnVerComentarios" asp-controller="Comentario" asp-action="Index" asp-route-id="@Model.Id">Ver comentarios</a><br />
 </div>

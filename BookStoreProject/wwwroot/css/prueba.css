@@ -146,6 +146,7 @@ form p {
     width: 1000px;
     border-color: black;
     border-radius: 5px;
+    background-color: aliceblue;
 }
 
 /*Tabla de Resultados*/
@@ -161,3 +162,73 @@ td {
 #container1 {
     min-height: 500px;
 }
+
+/*Detalle*/
+.libro {
+    height: 450px;
+    width: 300px;
+    margin-top: 50px;
+    margin-left: 200px;
+}
+
+.detalle {
+    width: 400px;
+    float: right;
+    margin-top: 100px;
+    margin-right: 100px;
+}
+
+.btnCompra {
+    float: right;
+    position: relative;
+    bottom: 300px;
+    right: 390px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 13px;
+    padding: 12px 15px 12px 15px;
+    font-style: italic;
+    font-family: Verdana;
+    background-color: aquamarine;
+    color: black;
+    font-weight: bold;
+}
+
+.btnCompra:hover{
+    text-decoration:none;
+    background-color:mediumaquamarine;
+    color: white;
+    box-shadow:10px 10px gray;
+    padding: 15px 18px;
+}
+
+#campoComentario {
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+#btnComentar {
+    margin-left: 200px;
+    padding: 3px 20px;
+}
+
+.btnVerComentarios {
+    float: right;
+    position: relative;
+    bottom: 58px;
+    right: 515px;
+    border-style: solid;
+    border-color: white;
+    border-width: thin;
+    border-radius: 3px;
+    padding: 4px 20px;
+    font-style: italic;
+    background-color: aquamarine;
+    color: black;
+    font-weight: bold;
+}
+
+
+
+
+
