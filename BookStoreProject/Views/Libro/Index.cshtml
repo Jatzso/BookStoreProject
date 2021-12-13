@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<p>
+<p id="btnAgregar">
     @if (User.IsInRole(nameof(Rol.Administrador)))
     {
-       <a asp-action="Create">Agregar nuevo libro</a>
+       <a class="btnAbm" asp-action="Create">Agregar nuevo libro</a>
     }
 
     <!--***************************************************-->
@@ -63,22 +63,19 @@
                     <td>
                         $ @Html.DisplayFor(modelItem => item.Precio)
                     </td>
-                    <td>
+                    <td class="dropdown">
                         @if (User.IsInRole(nameof(Rol.Administrador)))
+                        {   
+                        <button class="dropbtn">Opciones</button>
+                        <div class="dropdown-content">
+                            <a class="btnAbm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
+                            <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        </div>
+                        }else
                         {
-                           <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                           <a asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
-                           <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                          
+                          <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
                         }
-                        else
-                          {
-                            <a asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
-                            
-                          }
-                        
-
-
                     </td>
                 </tr>
             }

@@ -228,7 +228,46 @@ td {
     font-weight: bold;
 }
 
+/*Botones*/
+.btnAbm {
+    font-family: Verdana;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: aquamarine;
+    font-weight: bold;
+}
+.btnAbm:hover {
+        text-decoration: none;
+        background-color: mediumaquamarine;
+        color: white;
+        padding: 15px 18px;
 
+}
 
+/*Dropdown*/
+.dropdown-content {
+    display: none;
+    z-index: 1;
+    position:absolute;
+}
 
+.dropdown-content a {
+    display: block;
+}
 
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+    background-color: aquamarine;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/*Agregar*/
+#btnAgregar {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
