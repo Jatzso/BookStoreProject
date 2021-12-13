@@ -148,3 +148,16 @@ form p {
     border-radius: 5px;
 }
 
+/*Tabla de Resultados*/
+th {
+    font-family:Verdana;
+    font-size: 20px;
+}
+
+td {
+    font-style:italic;
+}
+
+#container1 {
+    min-height: 500px;
+}
