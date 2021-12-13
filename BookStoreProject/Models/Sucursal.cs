@@ -25,15 +25,15 @@ namespace BookStoreProject.Models
         
         [Required(ErrorMessage = "Este campo es requerido")]
         [EmailAddress]
-        [Display(Name = "Correo electrónico")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
         
         [Required(ErrorMessage = "Este campo es requerido")]
-        [Display(Name = "Horario de apertura")]
+        [Display(Name = "Abierto")]
         public int HoraApertura { get; set; }
        
         [Required(ErrorMessage = "Este campo es requerido")]
-        [Display(Name = "Horario de cierre")]
+        [Display(Name = "Cerrado")]
         public int HoraCierre { get; set; }
     }
 }

@@ -65,10 +65,6 @@
     }
 }
 
-.form-group{
-    padding:90px;
-}
-
 /*Header1*/
 
 #navFunc {
@@ -153,10 +149,12 @@ form p {
 th {
     font-family:Verdana;
     font-size: 20px;
+    font-style:italic;
 }
 
 td {
     font-style:italic;
+    border-bottom:double;
 }
 
 #container1 {
@@ -176,6 +174,11 @@ td {
     float: right;
     margin-top: 100px;
     margin-right: 100px;
+}
+
+.detalleTitulo{
+    font-family:Verdana;
+    font-style: italic;
 }
 
 .btnCompra {
@@ -199,7 +202,7 @@ td {
     background-color:mediumaquamarine;
     color: white;
     box-shadow:10px 10px gray;
-    padding: 15px 18px;
+    /*padding: 15px 18px;*/
 }
 
 #campoComentario {
@@ -210,22 +213,36 @@ td {
 #btnComentar {
     margin-left: 200px;
     padding: 3px 20px;
+    border-radius: 10px;
+    background-color:aquamarine;
+    font-family:Verdana;
+    font-weight:bold;
 }
 
 .btnVerComentarios {
     float: right;
     position: relative;
     bottom: 58px;
-    right: 515px;
+    right: 490px;
     border-style: solid;
-    border-color: white;
+    border-color: black;
     border-width: thin;
-    border-radius: 3px;
+    border-radius: 10px;
     padding: 4px 20px;
     font-style: italic;
     background-color: aquamarine;
     color: black;
     font-weight: bold;
+}
+
+.btnVerComentarios:hover {
+    color: black;
+    text-decoration:none;
+    box-shadow: 5px gray;
+}
+
+textarea {
+    border-radius:10px;
 }
 
 /*Botones*/
@@ -267,7 +284,27 @@ td {
 }
 
 /*Agregar*/
-#btnAgregar {
+.btnAgregar {
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+/*Tabla*/
+
+.columna {
+    border-top:hidden;
+    border-bottom:solid;
+}
+
+/*Sucursales*/
+#btnAdd {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/*Ventas*/
+.totales {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Verdana;
 }

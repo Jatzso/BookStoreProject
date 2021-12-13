@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<p id="btnAgregar">
+<p class="btnAgregar">
     @if (User.IsInRole(nameof(Rol.Administrador)))
     {
        <a class="btnAbm" asp-action="Create">Agregar nuevo libro</a>
@@ -37,7 +37,7 @@
  
     <table class="table">
         <thead>
-            <tr>
+            <tr class="columna">
                 <th>
                     @Html.DisplayNameFor(model => model.Titulo)
                 </th>

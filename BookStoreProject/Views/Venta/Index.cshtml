@@ -4,14 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Registro de ventas</h1>
-
-<p>
-    <a asp-action="Create">Agregar nueva venta</a>
+<p class="btnAgregar">
+    <a class="btnAbm" asp-action="Create">Agregar nueva venta</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="columna">
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -73,16 +71,20 @@
                 <td>
                     $ @Html.DisplayFor(modelItem => item.Libro.Precio)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Ver detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                <td class="dropdown">
+                    <button class="dropbtn">Opciones</button>
+                    <div class="dropdown-content">
+                        <a class="btnAbm" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                        <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a> 
+                        <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </div>
+                    
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<p>Ventas:</p> @ViewBag.TotalVentas
-<p>Total:</p> @ViewBag.TotalVendido
+<p class="totales">Cantidad libros vendidos: @ViewBag.TotalVentas</p> 
+<p class="totales">Venta total: @ViewBag.TotalVendido</p> 
 

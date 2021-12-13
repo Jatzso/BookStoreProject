@@ -4,8 +4,8 @@
 
 @if (User.IsInRole(nameof(Rol.Administrador)))
 {
-    <p>
-        <a asp-action="Create">Agregar nueva sucursal</a>
+    <p id="btnAdd">
+        <a class="btnAbm" asp-action="Create">Agregar nueva sucursal</a>
     </p>
 }
 
@@ -23,7 +23,7 @@
 
 <table class="table">
     <thead>
-        <tr>
+        <tr class="columna">
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -67,12 +67,16 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.HoraCierre)hs
                 </td>
-                <td>
+                <td class="dropdown">
                     @if (User.IsInRole(nameof(Rol.Administrador)))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        <button class="dropbtn">Opciones</button>
+                        <div class="dropdown-content">
+                            <a class="btnAbm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
+                            <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                        </div>
+                        
                     }
 
                 </td>
