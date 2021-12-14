@@ -4,45 +4,46 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Eliminar</h1>
+<div class="btnVolver">
+    <a class="btnAbm" asp-action="Index">Volver</a>
+</div>
 
-<h3>¿Está seguro que quiere eliminar esta sucursal?</h3>
-<div>
-    <h4>Sucursal</h4>
-    <hr />
+<h3 class="tituloEliminar">¿Está seguro que quiere eliminar esta sucursal?</h3>
+
+<div class="eliminar">
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model => model.Nombre):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Direccion)
+            @Html.DisplayNameFor(model => model.Direccion):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Direccion)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono)
+            @Html.DisplayNameFor(model => model.Telefono):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Telefono)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Email):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoraApertura)
+            @Html.DisplayNameFor(model => model.HoraApertura):
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HoraApertura)
+            @Html.DisplayFor(model => model.HoraApertura)hs
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HoraCierre)hs
+            @Html.DisplayNameFor(model => model.HoraCierre):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.HoraCierre)hs
@@ -51,7 +52,6 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a la lista de sucursales</a>
+        <input type="submit" value="Eliminar" class="btnCreate" />
     </form>
 </div>

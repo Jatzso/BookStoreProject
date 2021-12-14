@@ -4,39 +4,40 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Eliminar</h1>
+<div class="btnVolver">
+    <a class="btnAbm" asp-action="Index">Volver</a>
+</div>
 
-<h3>¿Está seguro que quiere eliminar esta libro?</h3>
-<div>
-    <h4>Libro</h4>
-    <hr />
+<h3 class="tituloEliminar">¿Está seguro que quiere eliminar este libro?</h3>
+
+<div class="eliminar">
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Titulo)
+            @Html.DisplayNameFor(model => model.Titulo):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Titulo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Autor)
+            @Html.DisplayNameFor(model => model.Autor):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Autor)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Editorial)
+            @Html.DisplayNameFor(model => model.Editorial):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Editorial)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genero)
+            @Html.DisplayNameFor(model => model.Genero):
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Genero)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Precio)
+            @Html.DisplayNameFor(model => model.Precio):
         </dt>
         <dd class = "col-sm-10">
             $@Html.DisplayFor(model => model.Precio)
@@ -45,7 +46,6 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a la lista</a>
+        <input type="submit" value="Eliminar" class="btnCreate" />
     </form>
 </div>

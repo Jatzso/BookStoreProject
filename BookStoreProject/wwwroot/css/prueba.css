@@ -413,3 +413,26 @@ textarea {
 #ventaColumna dt {
     text-decoration:underline;
 }
+
+/*Eliminar*/
+.tituloEliminar {
+    font-family: Verdana;
+    font-weight: bold;
+    margin-left: 200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.eliminar {
+    margin-left: 400px;
+    font-family: Verdana;
+    font-weight: bold;
+}
+
+.eliminar dt {
+    text-decoration:underline;
+}
+
+.eliminar dl {
+    width: 1000px;
+}
