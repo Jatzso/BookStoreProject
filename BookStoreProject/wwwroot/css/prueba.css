@@ -85,7 +85,11 @@
 }
 
 #ingresar {
-    margin-left: 500px;
+    margin-left: 730px;
+}
+
+#yaIngresado {
+    margin-left: 160px;
 }
 
 /**Footer Redes*/
@@ -435,4 +439,53 @@ textarea {
 
 .eliminar dl {
     width: 1000px;
+}
+
+/*Registro*/
+
+#bodyRegistro {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    background-color: beige;
+    margin-left: 450px;
+    margin-top: 70px;
+}
+
+    #bodyRegistro h1 {
+        padding-top: 20px;
+        margin-left: 150px;
+        font-family: Verdana;
+        font-weight: bold;
+       
+    }
+
+    #bodyRegistro form {
+        width: 400px;
+        margin-left: 50px;
+        font-family: Verdana;
+        font-weight:bold;
+    }
+
+   
+    #btnRegistro {
+        margin-top: 30px;
+        margin-left: 200px;
+    }
+
+    .formRegistro {
+        width: 400px;
+    }
+
+#requisito {
+    width: 470px;
+    margin-top: 20px;
+}
+
+#requisito p {
+    font-family: Verdana;
+    font-style: italic;
+    color: green;
+    margin-left: 32px;
+    text-align: center
 }

@@ -48,14 +48,14 @@
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <div id="yaIngresado" class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item float-right">
                                 <a class="nav-link text-success font-italic" asp-area="">@User.FindFirstValue(ClaimTypes.GivenName)</a>
                             </li>
                             <li class="nav-item float-right">
                                 <form asp-controller="Usuario" asp-action="Salir" method="post">
-                                    <button type="submit" class="nav-link text-danger">Salir</button>
+                                    <button type="submit" class="btn btn-danger">Salir</button>
                                 </form>
                             </li>
                         </ul>
@@ -65,7 +65,7 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a id="ingresar" class="nav-link text-warning border border-primary bg-light" asp-area="" asp-controller="Usuario" asp-action="Ingresar">Ingresar</a>
+                                <a id="ingresar" class="btn btn-primary" asp-area="" asp-controller="Usuario" asp-action="Ingresar">Ingresar</a>
                             </li>
                         </ul>
                     </div>}

@@ -1,39 +1,46 @@
 ﻿@model BookStoreProject.Models.Usuario
 
-@{
-    Layout = "~/Views/Shared/_Login.cshtml";
-}
+@{ Layout = null; }
 
-<h1>Registro</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Registrarse">
-            <div class="text-warning font-italic">Ingrese al menos 8 digitos con 1 miniscula, 1 mayuscula y 1 numero</div>
-            <div class="form-group">
-                <label asp-for="User" class="control-label"></label>
-                <input asp-for="User" class="form-control" />
-                <span asp-validation-for="User" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="pass" class="control-label">Contraseña</label>
-                <input name="pass" type="password" class="form-control" />
-                <span asp-validation-for="Contraseña" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Registrarse" class="btn btn-primary" />
-                <a class="btn btn-danger" asp-action="Ingresar">Volver</a>
-            </div>
-        </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/prueba.css" />
+</head>
+<body id="bodyRegistro">
+    <h1>Registro</h1>
+    <div id="requisito"> 
+        <p>Ingrese al menos 8 digitos con 1 miniscula, 1 mayuscula y 1 numero</p>
     </div>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+            <form asp-action="Registrarse">
+                <div>
+                    <label asp-for="User"></label>
+                    <input class="formRegistro" asp-for="User"/>
+                    <span asp-validation-for="User" class="text-danger"></span>
+                </div>
+                <div>
+                    <label for="pass">Contraseña</label>
+                    <input class="formRegistro" name="pass" type="password"/>
+                    <span asp-validation-for="Contraseña" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Nombre"></label>
+                    <input class="formRegistro" asp-for="Nombre" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div id="btnRegistro">
+                    <input class="btn btn-success" type="submit" value="Registrarse" />
+                    <a class="btn btn-primary" asp-action="Ingresar">Volver</a>
+                </div>
+            </form>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+    </body>
+</html>
