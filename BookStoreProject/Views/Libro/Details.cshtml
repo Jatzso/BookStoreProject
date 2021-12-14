@@ -4,6 +4,14 @@
     ViewData["Title"] = "Details";
 }
 
+@if (User.IsInRole(nameof(Rol.Administrador)))
+{
+    <div class="btnVolver">
+        <a class="btnAbm" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+    </div>
+    
+}
+
 @{
     var cargarImagen = "http://localhost:52620/imagenes/" + @Model.Id + ".jpg";
 
@@ -46,15 +54,10 @@
 </div>
 
 <form asp-action="Comentar" asp-route-id="@Model.Id" method="post">
-    <textarea id="campoComentario" name="Comment" rows="3" cols="100" placeholder="Escriba un comentario"></textarea><br />
+    <textarea id="campoComentario" name="Comment" rows="3" cols="100" placeholder="Escriba un comentario..."></textarea><br />
     <input id="btnComentar" type="submit" name="Comentar" value="Comentar" />
 </form>
 <div>
-    @if (User.IsInRole(nameof(Rol.Administrador)))
-    {
-        <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
-    }
-
     <a class="btnCompra" asp-controller="Venta" asp-action="Comprar" asp-route-id="@Model.Id">Comprar</a><br />
     <a class="btnVerComentarios" asp-controller="Comentario" asp-action="Index" asp-route-id="@Model.Id">Ver comentarios</a><br />
 </div>

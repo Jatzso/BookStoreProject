@@ -20,9 +20,10 @@ namespace BookStoreProject.Controllers
         }
 
         // GET: Comentario
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            var bookStoreDBContext = _context.Comentarios.Include(c => c.Libro).Include(c => c.Usuario);
+            var bookStoreDBContext = _context.Comentarios.Include(c => c.Libro).Include(c => c.Usuario).Where(c => c.LibroId == id);
+
             return View(await bookStoreDBContext.ToListAsync());
         }
 

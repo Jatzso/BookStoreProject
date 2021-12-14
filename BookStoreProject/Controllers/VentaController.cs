@@ -31,27 +31,6 @@ namespace BookStoreProject.Controllers
             return View(await bookStoreDBContext.ToListAsync());
         }
 
-
-        // GET: Venta/Details/5
-        [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var venta = await _context.Ventas
-                .Include(v => v.Libro)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (venta == null)
-            {
-                return NotFound();
-            }
-
-            return View(venta);
-        }
-
         // GET: Venta/Create
         [Authorize(Roles = nameof(Rol.Administrador))]
         public IActionResult Create()

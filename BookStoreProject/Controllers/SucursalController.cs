@@ -36,25 +36,6 @@ namespace BookStoreProject.Controllers
             return View(sucursales);
         }
 
-        [Authorize(Roles = nameof(Rol.Administrador))]
-        // GET: Sucursal/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var sucursal = await _context.Sucursal
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (sucursal == null)
-            {
-                return NotFound();
-            }
-
-            return View(sucursal);
-        }
-
         // GET: Sucursal/Create
         [Authorize(Roles = nameof(Rol.Administrador))]
         public IActionResult Create()

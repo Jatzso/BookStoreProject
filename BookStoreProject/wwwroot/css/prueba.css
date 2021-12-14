@@ -167,6 +167,7 @@ td {
     width: 300px;
     margin-top: 50px;
     margin-left: 200px;
+    border-style:double;
 }
 
 .detalle {
@@ -214,19 +215,27 @@ td {
     margin-left: 200px;
     padding: 3px 20px;
     border-radius: 10px;
-    background-color:aquamarine;
-    font-family:Verdana;
-    font-weight:bold;
+    background-color: aquamarine;
+    font-family: Verdana;
+    font-weight: bold;
+    border-style: hidden;
+    font-style: italic;
+    font-size: 15px;
 }
+
+    #btnComentar:hover {
+        text-decoration: none;
+        background-color: mediumaquamarine;
+        color: white;
+        box-shadow: 10px 10px gray;
+    }
+
 
 .btnVerComentarios {
     float: right;
     position: relative;
-    bottom: 58px;
+    bottom: 55px;
     right: 490px;
-    border-style: solid;
-    border-color: black;
-    border-width: thin;
     border-radius: 10px;
     padding: 4px 20px;
     font-style: italic;
@@ -234,11 +243,11 @@ td {
     color: black;
     font-weight: bold;
 }
-
-.btnVerComentarios:hover {
-    color: black;
-    text-decoration:none;
-    box-shadow: 5px gray;
+ .btnVerComentarios:hover {
+    text-decoration: none;
+    background-color: mediumaquamarine;
+    color: white;
+    box-shadow: 10px 10px gray;
 }
 
 textarea {

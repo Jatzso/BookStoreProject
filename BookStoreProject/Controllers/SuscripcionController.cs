@@ -26,25 +26,6 @@ namespace BookStoreProject.Controllers
             return View(await bookStoreDBContext.ToListAsync());
         }
 
-        // GET: Suscripcion/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var suscripcion = await _context.Suscripciones
-                .Include(s => s.Usuario)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (suscripcion == null)
-            {
-                return NotFound();
-            }
-
-            return View(suscripcion);
-        }
-
         // GET: Suscripcion/Create
         public IActionResult Create()
         {
