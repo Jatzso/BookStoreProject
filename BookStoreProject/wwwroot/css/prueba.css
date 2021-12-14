@@ -308,3 +308,78 @@ textarea {
     font-weight: bold;
     font-family: Verdana;
 }
+
+/*Login*/
+#bodyIngresar {
+    width: 400px;
+    height: 265px;
+    border-radius: 20px;
+    background-color: beige;
+    margin-top: 180px;
+    margin-left: 500px;
+}
+
+.labelIngresar {
+    margin-left: 50px;
+    margin-top: 10px;
+    font-family: Verdana;
+    font-weight: bold;
+}
+
+.inputIngresar {
+    margin-left: 45px;
+    width: 299px;
+    margin-bottom: 10px;
+}
+
+#btnIngresar {
+    margin-left:100px;
+}
+
+#divTextDanger {
+    padding-top: 10px;
+    padding-left: 43px;
+}
+
+/*CRUD*/
+/*Create*/
+
+.create {
+    margin-left:450px;
+    font-family: Verdana;
+    font-weight:bold;
+}
+
+.tituloCrear {
+    font-family: Verdana;
+    font-weight: bold;
+    margin-left: 380px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.btnVolver {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.btnCreate {
+    margin-left: 60px;
+    font-family: Verdana;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-style: hidden;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: aquamarine;
+}
+
+.btnCreate:hover {
+    text-decoration: none;
+    background-color: mediumaquamarine;
+    color: white;
+    box-shadow: 10px 10px grey;
+    /* padding: 15px 18px;*/
+}
