@@ -392,3 +392,24 @@ textarea {
     box-shadow: 10px 10px grey;
     /* padding: 15px 18px;*/
 }
+
+.tituloEdite {
+    font-family: Verdana;
+    font-weight: bold;
+    margin-left: 495px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#ventaColumna {
+    margin-left: 400px;
+}
+
+#ventaColumna dl {
+    width:1200px;
+    font-family:Verdana;
+}
+
+#ventaColumna dt {
+    text-decoration:underline;
+}

@@ -50,58 +50,6 @@ namespace BookStoreProject.Controllers
             return View(suscripcion);
         }
 
-        // GET: Suscripcion/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var suscripcion = await _context.Suscripciones.FindAsync(id);
-            if (suscripcion == null)
-            {
-                return NotFound();
-            }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", suscripcion.UsuarioId);
-            return View(suscripcion);
-        }
-
-        // POST: Suscripcion/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Email,UsuarioId")] Suscripcion suscripcion)
-        {
-            if (id != suscripcion.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(suscripcion);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SuscripcionExists(suscripcion.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id", suscripcion.UsuarioId);
-            return View(suscripcion);
-        }
 
         // GET: Suscripcion/Delete/5
         public async Task<IActionResult> Delete(int? id)

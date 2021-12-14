@@ -17,9 +17,6 @@
                 @Html.DisplayNameFor(model => model.Apellido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Dni)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Calle)
             </th>
             <th>
@@ -29,15 +26,11 @@
                 @Html.DisplayNameFor(model => model.Provincia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tarjeta)
+                @Html.DisplayNameFor(model => model.Telefono)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Libro)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Libro.Precio)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -51,9 +44,6 @@
                     @Html.DisplayFor(modelItem => item.Apellido)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Dni)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Calle)
                 </td>
                 <td>
@@ -63,18 +53,15 @@
                     @Html.DisplayFor(modelItem => item.Provincia)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Tarjeta)
+                    @Html.DisplayFor(modelItem => item.Telefono)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Libro.Titulo)
                 </td>
-                <td>
-                    $ @Html.DisplayFor(modelItem => item.Libro.Precio)
-                </td>
                 <td class="dropdown">
                     <button class="dropbtn">Opciones</button>
                     <div class="dropdown-content">
-                        <a class="btnAbm" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                        <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
                         <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                     </div>
                     
