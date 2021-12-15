@@ -36,12 +36,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario.User)
             </td>
-            <td class="dropdown">
+            @if(User.Identity.IsAuthenticated && User.IsInRole(nameof(Rol.Administrador)))
+                {
+                <td class="dropdown">
                 <button class="dropbtn">Opciones</button>
                 <div class="dropdown-content">
                     <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </div>
-            </td>
+               </td>
+                }
+            
         </tr>
 }
     </tbody>

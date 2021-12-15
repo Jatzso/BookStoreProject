@@ -7,6 +7,23 @@
 <p class="btnAgregar">
     <a class="btnAbm" asp-action="Create">Agregar suscripcion</a>
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        <input class="buscador" id="cadenaBuscada" name="cadenaBuscada" type="text" value="" placeholder="Email de la suscripcion..." />
+        <input class="buscar" type="submit" value="Buscar" />
+    </p>
+    @if (Model.Count() < 1)
+    {
+        <p class="notFound">¡Lo sentimos, no se ha encontra ninguna suscripcion!</p>
+    }
+    else
+    {
+        <p>Resultados: @Model.Count()</p>
+    }
+}
+
 <table class="table">
     <thead>
         <tr class="columna">
@@ -23,24 +40,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Nombre)
-            </td>
-            <td class="dropdown">
-                <button class="dropbtn">Opciones</button>
-                <div class="dropdown-content">
-                    <a class="btnAbm"  asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                </div>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                </td>
+                <td class="dropdown">
+                    <button class="dropbtn">Opciones</button>
+                    <div class="dropdown-content">
+                        <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

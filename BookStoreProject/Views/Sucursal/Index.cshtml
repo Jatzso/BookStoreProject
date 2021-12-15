@@ -19,6 +19,10 @@
     {
         <p class="notFound">¡Lo sentimos, no se ha encontra ninguna sucursal!</p>
     }
+    else
+    {
+        <p>Resultados: @Model.Count()</p>
+    }
 }
 
 <table class="table">
@@ -75,11 +79,11 @@
                             <a class="btnAbm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                             <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                         </div>
-                        
+
                     }
 
                 </td>
             </tr>
-}
+        }
     </tbody>
 </table>

@@ -19,12 +19,20 @@ namespace BookStoreProject.Controllers
             _context = context;
         }
 
-        // GET: Suscripcion
-        public async Task<IActionResult> Index()
+        public ActionResult Index(string cadenaBuscada)
         {
-            var bookStoreDBContext = _context.Suscripciones.Include(s => s.Usuario);
-            return View(await bookStoreDBContext.ToListAsync());
+
+            var suscripciones = from s in _context.Suscripciones.Include(s => s.Usuario)
+                             select s;
+
+            if (!String.IsNullOrEmpty(cadenaBuscada))
+            {
+                suscripciones = suscripciones.Where(s => s.Email.Contains(cadenaBuscada));
+            }
+
+            return View(suscripciones);
         }
+
 
         // GET: Suscripcion/Create
         public IActionResult Create()
