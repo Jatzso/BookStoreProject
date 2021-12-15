@@ -4,11 +4,14 @@
     ViewData["Title"] = "Suscribirse";
 }
 
-<h1>Suscribirse</h1>
+<div class="btnVolver">
+    <a class="btnAbm" asp-action="Index">Volver </a>
+</div>
 
-<hr />
+<h2 id="tituloSuscripcion">Suscribirse</h2>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="create">
         <form asp-action="Suscribirse">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -17,14 +20,11 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Suscribirse" class="btn btn-primary" />
+                <input type="submit" value="Suscribirse" class="btnCreate" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 
