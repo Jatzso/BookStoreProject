@@ -74,7 +74,11 @@
                         </div>
                         }else
                         {
-                          <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
+                          <button class="dropbtn">Opciones</button>
+                          <div class="dropdown-content">
+                              <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
+                          </div>
+                          
                         }
                     </td>
                 </tr>

@@ -517,3 +517,35 @@ textarea {
     margin-top: 15px;
     margin-left: 300px;
 }
+
+/*Formulario compra*/
+#tituloCompra {
+    font-family: Verdana;
+    font-weight: bold;
+    margin-left: 200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#btnCompraForm {
+    margin-left: 65px;
+}
+
+.btnCompraFormulario {
+    border-style: solid;
+    border-color: white;
+    border-radius: 13px;
+    padding: 12px 15px 12px 15px;
+    font-style: italic;
+    font-family: Verdana;
+    background-color: aquamarine;
+    color: black;
+    font-weight: bold;
+}
+
+.btnCompraFormulario:hover {
+    text-decoration: none;
+    background-color: mediumaquamarine;
+    color: white;
+    box-shadow: 10px 10px gray;
+}

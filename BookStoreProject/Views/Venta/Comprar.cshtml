@@ -4,64 +4,69 @@
     ViewData["Title"] = "Comprar";
 }
 
-<h1>Formulario de Compra</h1>
+<div class="btnVolver">
+    <a class="btnAbm" asp-controller="Libro" asp-action="Index">Volver</a>
+</div>
 
-<hr />
+<h2 id="tituloCompra">¡Bienvenido al formulario de compra!</h2>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="create">
         <form asp-action="Comprar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" pattern="[A-Za-z]{3,0}" class="form-control" placeholder="Nombre"  required>
+                <label asp-for="Nombre" class="control-label"></label>:
+                <input asp-for="Nombre" pattern="[A-Za-z]{3,0}" class="form-control" required autofocus>
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Apellido" class="control-label"></label>
+                <label asp-for="Apellido" class="control-label"></label>:
                 <input asp-for="Apellido" class="form-control" />
                 <span asp-validation-for="Apellido" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Dni" class="control-label"></label>
+                <label asp-for="Dni" class="control-label"></label>:
                 <input asp-for="Dni" class="form-control" />
                 <span asp-validation-for="Dni" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Calle" class="control-label"></label>
+                <label asp-for="Calle" class="control-label"></label>:
                 <input asp-for="Calle" class="form-control" />
                 <span asp-validation-for="Calle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Altura" class="control-label"></label>
+                <label asp-for="Altura" class="control-label"></label>:
                 <input asp-for="Altura" class="form-control" />
                 <span asp-validation-for="Altura" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Provincia" class="control-label"></label>
+                <label asp-for="Provincia" class="control-label"></label>:
                 <input asp-for="Provincia" class="form-control" />
                 <span asp-validation-for="Provincia" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
+                <label asp-for="Telefono" class="control-label"></label>:
                 <input asp-for="Telefono" placeholder="11-2222-2222" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <label asp-for="Email" class="control-label"></label>:
+                <input asp-for="Email" class="form-control" placeholder="user@abc.com"/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tarjeta" class="control-label"></label>
-                <select name="Tarjeta">
-                    <option value="Credito">Crédito</option>
-                    <option value="Debito">Débito</option>
+                <label asp-for="Tarjeta" class="control-label"></label>:
+                <select name="Tarjeta" class="form-control">
+                    <option value="Visa">Visa</option>
+                    <option value="Mastercard">Mastercard</option>
+                    <option value="Cabal">Cabal</option>
+                    <option value="Nativa">Nativa</option>
                 </select>
                 <!--<input asp-for="Tarjeta" class="form-control" />-->
                 <span asp-validation-for="Tarjeta" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumeroTarjeta" class="control-label"></label>
+                <label asp-for="NumeroTarjeta" class="control-label"></label>:
                 <input asp-for="NumeroTarjeta" class="form-control" />
                 <span asp-validation-for="NumeroTarjeta" class="text-danger"></span>
             </div>
@@ -71,15 +76,11 @@
             <select asp-for="LibroId" class="form-control" asp-items="ViewBag.LibroId"></select>
     </div>
                 -->
-            <div class="form-group">
-                <input type="submit" value="Comprar" class="btn btn-primary" />
+            <div id="btnCompraForm" class="form-group">
+                <input type="submit" value="Comprar" class="btnCompraFormulario" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-controller="Libro"  asp-action="Index">Volver a la lista de libros</a>
 </div>
 
 @section Scripts {
