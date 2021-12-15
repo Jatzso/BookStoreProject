@@ -17,6 +17,7 @@ namespace BookStoreProject.Models
         public DateTime Fecha { get; set; }
 
         [MaxLength(80, ErrorMessage = "La longitud máxima es {1}")]
+        [Display(Name = "Comentario")]
         public string Comment { get; set; }
 
         //Relaciones con otras entidades

@@ -508,3 +508,12 @@ textarea {
 #bodyLayout {
     background-color: azure;
 }
+
+/*Comentarios*/
+#sinComentarios {
+    font-family: Verdana;
+    font-style: italic;
+    color: red;
+    margin-top: 15px;
+    margin-left: 300px;
+}
