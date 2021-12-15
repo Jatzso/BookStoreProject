@@ -120,6 +120,7 @@ namespace BookStoreProject.Controllers
             return View();
         }
 
+        
         [HttpPost]
         public ActionResult Comprar(int Id, string Nombre, string Apellido, int Dni, string Calle, int Altura,
             string Provincia, int Telefono, string Email, string Tarjeta, int NumeroTarjeta)
@@ -138,10 +139,17 @@ namespace BookStoreProject.Controllers
             venta.LibroId = Id;
             var libro = _context.Libros.Find(Id);
             venta.Libro = libro;
-            _context.Ventas.Add(venta);
+            if (ModelState.IsValid)
+            {
+                _context.Ventas.Add(venta);
             _context.SaveChanges();
+                ViewBag.LibroId = venta.LibroId;
+                return View("CompraExitosa");
+
+            }
+            
             return RedirectToAction("Index", "Home");
         }
-
+        
     }
 }

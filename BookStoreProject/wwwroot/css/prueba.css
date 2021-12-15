@@ -368,6 +368,10 @@ textarea {
     font-weight:bold;
 }
 
+#formCreate {
+    width: 250px;
+}
+
 .tituloCrear {
     font-family: Verdana;
     font-weight: bold;

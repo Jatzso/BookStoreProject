@@ -53,7 +53,7 @@ namespace BookStoreProject.Models
 
         [Required(ErrorMessage = "*Campo requerido")]
         [CreditCard]
-        [RegularExpression(@"5[1-5][0-9]{14}$", ErrorMessage = "*Nro° tarjeta inválida")]
+        //[RegularExpression(@"5[1-5][0-9]{14}$", ErrorMessage = "*Nro° tarjeta inválida")]
         public int NumeroTarjeta { get; set; }
 
         //Relaciones con otras entidades
