@@ -105,11 +105,11 @@ namespace BookStoreProject.Controllers
                     suscripcion.Fecha = DateTime.Now;
                     _context.Suscripciones.Add(suscripcion);
                     _context.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return View("SuscripcionExitosa");
                 }
                 else
                 {
-                    ModelState.AddModelError(nameof(Suscripcion.Email), "El correo ya se encuentra suscripto");
+                    ModelState.AddModelError(nameof(Suscripcion.Email), "*Correo ya suscripto");
                 }
                 
             }

@@ -108,11 +108,12 @@
     width: 60px;
     height: 60px;
     margin-top:5px;
+    border-radius:50%;
+    transition: transform .2s;
 }
 
 .red:hover {
-    width:  80px;
-    height: 80px;
+   transform: scale(1.2);
 }
 
 .redes li p {
@@ -149,6 +150,10 @@ form p {
     background-color: white;
 }
 
+#cadenaBuscada {
+    margin-top:15px;
+}
+
 /*Tabla de Resultados*/
 th {
     font-family:Verdana;
@@ -173,6 +178,7 @@ td {
     margin-left: 200px;
     border-style:double;
     transition: transform 1s;
+    border-radius:20px;
 }
 
 .libro:hover {
@@ -513,6 +519,16 @@ textarea {
     background-color: azure;
 }
 
+#msjSuscripcionExitosa {
+    text-align: center;
+    margin-top: 120px;
+    font-family: Verdana;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+}
+}
+
 /*Comentarios*/
 #sinComentarios {
     font-family: Verdana;
@@ -559,8 +575,9 @@ textarea {
     position: relative;
     left: 200px;
     bottom: 10px;
-    height: 350px;
+    height: 320px;
     margin-top: 30px;
+    border-radius:20px;
 }
 
 #msjCompra {
@@ -575,3 +592,15 @@ textarea {
 .enhorabuena {
     margin-left: 100px;
 }
+
+/*Logo*/
+
+#logo {
+    font-family: Lucida Calligraphy;
+    font-weight:bold;
+    border-style: double;
+    border-radius: 30px;
+    padding: 5px;
+}
+
+
