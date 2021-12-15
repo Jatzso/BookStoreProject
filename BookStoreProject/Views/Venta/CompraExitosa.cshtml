@@ -1,7 +1,16 @@
-﻿<p>Felicidades!</p>
+﻿@{
+    ViewData["Title"] = "CompraExitosa";
+}
+
+
+<div id="msjCompra">
+    <p class="enhorabuena">¡Enhorabuena!</p>
+    <p>Su compra fue procesada con éxito</p>
+</div>
+
 
 @{
     var cargarImagen = "http://localhost:52620/imagenes/" + ViewBag.LibroId + ".jpg";
 
 }
-<img class="libro" src=@cargarImagen alt="Model.Titulo" />
+<img id="imgCompra" class="libro" src=@cargarImagen alt="Model.Titulo" />

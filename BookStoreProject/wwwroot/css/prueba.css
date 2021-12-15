@@ -553,3 +553,25 @@ textarea {
     color: white;
     box-shadow: 10px 10px gray;
 }
+
+/*Compra exitosa*/
+#imgCompra {
+    position: relative;
+    left: 200px;
+    bottom: 10px;
+    height: 350px;
+    margin-top: 30px;
+}
+
+#msjCompra {
+    font-family: Verdana;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 350px;
+}
+
+.enhorabuena {
+    margin-left: 100px;
+}
