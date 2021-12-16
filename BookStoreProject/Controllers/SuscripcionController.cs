@@ -21,6 +21,7 @@ namespace BookStoreProject.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = nameof(Rol.Administrador))]
         public ActionResult Index(string cadenaBuscada)
         {
 

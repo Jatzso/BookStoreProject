@@ -77,10 +77,6 @@
     <tbody>
         @foreach (var comentario in ViewData["Comments"] as IQueryable<Comentario>)
         {
-            @if(comentario == null)
-                {
-                    <p>Nadie a comentado este libro aún. ¡Sé el primero!</p>
-                }
     <tr>
         <td>
             @Html.DisplayFor(modelItem => comentario.Fecha)
