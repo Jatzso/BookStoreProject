@@ -55,8 +55,11 @@ namespace BookStoreProject.Models
         [RegularExpression(@"5[1-5][0-9]{14}$", ErrorMessage = "*Nro° tarjeta inválida")]
         public long NumeroTarjeta { get; set; }
 
+        [Required]
+        public DateTime Fecha { get; set; }
+
         //Relaciones con otras entidades
-       
+
         [ForeignKey(nameof(Libro))]
         public int LibroId { get; set; }
         public Libro Libro { get; set; }

@@ -141,6 +141,7 @@ namespace BookStoreProject.Controllers
             venta.LibroId = Id;
             var libro = _context.Libros.Find(Id);
             venta.Libro = libro;
+            venta.Fecha = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _context.Ventas.Add(venta);

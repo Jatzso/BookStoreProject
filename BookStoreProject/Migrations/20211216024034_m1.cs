@@ -13,10 +13,10 @@ namespace BookStoreProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Titulo = table.Column<string>(nullable: false),
-                    Autor = table.Column<string>(nullable: false),
-                    Editorial = table.Column<string>(nullable: false),
-                    Genero = table.Column<string>(nullable: false),
+                    Titulo = table.Column<string>(maxLength: 40, nullable: false),
+                    Autor = table.Column<string>(maxLength: 40, nullable: false),
+                    Editorial = table.Column<string>(maxLength: 40, nullable: false),
+                    Genero = table.Column<string>(maxLength: 40, nullable: false),
                     Precio = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -30,8 +30,8 @@ namespace BookStoreProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(nullable: false),
-                    Direccion = table.Column<string>(nullable: false),
+                    Nombre = table.Column<string>(maxLength: 20, nullable: false),
+                    Direccion = table.Column<string>(maxLength: 40, nullable: false),
                     Telefono = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     HoraApertura = table.Column<int>(nullable: false),
@@ -73,7 +73,8 @@ namespace BookStoreProject.Migrations
                     Telefono = table.Column<int>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     Tarjeta = table.Column<string>(nullable: false),
-                    NumeroTarjeta = table.Column<int>(nullable: false),
+                    NumeroTarjeta = table.Column<long>(nullable: false),
+                    Fecha = table.Column<DateTime>(nullable: false),
                     LibroId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -93,7 +94,8 @@ namespace BookStoreProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Comment = table.Column<string>(maxLength: 80, nullable: true),
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    Comment = table.Column<string>(maxLength: 80, nullable: false),
                     LibroId = table.Column<int>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false)
                 },
@@ -120,6 +122,7 @@ namespace BookStoreProject.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Fecha = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false)
                 },

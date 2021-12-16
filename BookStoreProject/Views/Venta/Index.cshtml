@@ -11,10 +11,10 @@
     <thead>
         <tr class="columna">
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apellido)
+                @Html.DisplayNameFor(model => model.Dni)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Calle)
@@ -38,10 +38,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
+                    @Html.DisplayFor(modelItem => item.Fecha)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Apellido)
+                    @Html.DisplayFor(modelItem => item.Dni)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Calle)
@@ -72,5 +72,5 @@
 </table>
 
 <p class="totales">Cantidad libros vendidos: @ViewBag.TotalVentas</p> 
-<p class="totales">Venta total: @ViewBag.TotalVendido</p> 
+<p class="totales">Venta total: $@ViewBag.TotalVendido</p> 
 

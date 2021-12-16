@@ -18,7 +18,7 @@ namespace BookStoreProject.Models
         public string Nombre { get; set; }
         
         [Required(ErrorMessage = "*Campo requerido")]
-        [MaxLength(30, ErrorMessage = "*Longitud maxima {1}")]
+        [MaxLength(40, ErrorMessage = "*Longitud maxima {1}")]
         public string Direccion { get; set; }
         
         [Required(ErrorMessage = "*Campo requerido")]
