@@ -17,8 +17,9 @@ namespace BookStoreProject.Models
         [Required]
         public DateTime Fecha { get; set; }
 
-        [EmailAddress] 
-        [Required(ErrorMessage = "El campo es requerido")]
+        [EmailAddress(ErrorMessage = "*Formato inválido")] 
+        [Required(ErrorMessage = "*Campo requerido")]
+        [RegularExpression(@"^[^@]+@[^@]+\.[a-zA-Z]{2,}$", ErrorMessage = "*Formato inválido")]
         public string Email { get; set; }
 
         //relaciones con otras entidades

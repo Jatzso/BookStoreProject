@@ -22,7 +22,7 @@ namespace BookStoreProject.Models
         public string Apellido { get; set; }
         
         [Required(ErrorMessage = "*Campo requerido")]
-        [Range(1000000, 990000000)]
+        [Range(1000000, 99000000)]
         [RegularExpression(@"[0-9]{8}", ErrorMessage = "*DNI inválido")]
         public int Dni { get; set; }
         
@@ -31,7 +31,7 @@ namespace BookStoreProject.Models
         public string Calle { get; set; }
 
         [Required(ErrorMessage = "*Campo requerido")]
-        [RegularExpression(@"[0-9]{1,4}", ErrorMessage = "*Altura inválida")]
+        [RegularExpression(@"[1-9][0-9]{0,3}", ErrorMessage = "*Altura inválida")]
         public int Altura { get; set; }
 
         [Required(ErrorMessage = "*Campo requerido")]
@@ -39,7 +39,7 @@ namespace BookStoreProject.Models
         public string Provincia { get; set; }
         
         [Required(ErrorMessage = "*Campo requerido")]
-        [Phone]
+        [Phone(ErrorMessage = "*Telefono inválido")]
         [RegularExpression(@"11[0-9]{8}", ErrorMessage = "*Teléfono inválido")]
         public int Telefono { get; set; }
 
@@ -52,9 +52,8 @@ namespace BookStoreProject.Models
         public string Tarjeta { get; set; }
 
         [Required(ErrorMessage = "*Campo requerido")]
-        [CreditCard]
-        //[RegularExpression(@"5[1-5][0-9]{14}$", ErrorMessage = "*Nro° tarjeta inválida")]
-        public int NumeroTarjeta { get; set; }
+        [RegularExpression(@"5[1-5][0-9]{14}$", ErrorMessage = "*Nro° tarjeta inválida")]
+        public long NumeroTarjeta { get; set; }
 
         //Relaciones con otras entidades
        

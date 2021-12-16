@@ -12,20 +12,27 @@ namespace BookStoreProject.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         
-        [Required(ErrorMessage ="El campo es requerido")]
+        [Required(ErrorMessage ="*Campo requerido")]
+        [MaxLength(20, ErrorMessage ="*Longitud maxima {1}")]
         public string Titulo { get; set; }
         
-        [Required(ErrorMessage = "El campo es requerido")]
+        [Required(ErrorMessage = "*Campo requerido")]
+        [RegularExpression(@"[A-Za-z]", ErrorMessage = "*Números no permitidos")]
+        [MaxLength(20, ErrorMessage = "*Longitud maxima {1}")]
         public string Autor { get; set; }
         
-        [Required(ErrorMessage = "El campo es requerido")]
+        [Required(ErrorMessage = "*Campo requerido")]
+        [RegularExpression(@"[A-Za-z]", ErrorMessage = "*Números no permitidos")]
+        [MaxLength(20, ErrorMessage = "*Longitud maxima {1}")]
         public string Editorial { get; set; }
        
-        [Required(ErrorMessage = "El campo es requerido")]
+        [Required(ErrorMessage = "*Campo requerido")]
+        [RegularExpression(@"[A-Za-z]", ErrorMessage = "*Números no permitidos")]
+        [MaxLength(20, ErrorMessage = "*Longitud maxima {1}")]
         public string Genero { get; set; }
        
-        [Required(ErrorMessage = "El campo es requerido")]
-        [Range(1,1000000, ErrorMessage = "El precio debe ser mayor a 0")]
+        [Required(ErrorMessage = "*Campo requerido")]
+        [Range(1,1000000, ErrorMessage = "*Precio menor a 1")]
         public int Precio { get; set; }
 
     }

@@ -125,7 +125,7 @@ namespace BookStoreProject.Controllers
         
         [HttpPost]
         public ActionResult Comprar(int Id, string Nombre, string Apellido, int Dni, string Calle, int Altura,
-            string Provincia, int Telefono, string Email, string Tarjeta, int NumeroTarjeta)
+            string Provincia, int Telefono, string Email, string Tarjeta, long NumeroTarjeta)
         {
             var venta = new Venta();
             venta.Nombre = Nombre;

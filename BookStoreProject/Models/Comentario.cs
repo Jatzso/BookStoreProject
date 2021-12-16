@@ -16,18 +16,23 @@ namespace BookStoreProject.Models
         [Required]
         public DateTime Fecha { get; set; }
 
-        [MaxLength(80, ErrorMessage = "La longitud máxima es {1}")]
+        [MaxLength(80, ErrorMessage = "*Longitud máxima {1}")]
         [Display(Name = "Comentario")]
+        [Required]
         public string Comment { get; set; }
 
         //Relaciones con otras entidades
         
         [ForeignKey(nameof(Libro))]
+      
         public int LibroId { get; set; }
+       
         public Libro Libro { get; set; }
 
         [ForeignKey(nameof(Usuario))]
+        [Required]
         public int UsuarioId { get; set; }
+        [Required]
         public Usuario Usuario { get; set; }
     }
 }
