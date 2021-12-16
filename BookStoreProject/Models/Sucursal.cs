@@ -14,7 +14,7 @@ namespace BookStoreProject.Models
         public int Id { get; set; }
         
         [Required(ErrorMessage = "*Campo requerido")]
-        [MaxLength(20, ErrorMessage = "*Longitud maxima {1}")]
+        [MaxLength(40, ErrorMessage = "*Longitud maxima {1}")]
         public string Nombre { get; set; }
         
         [Required(ErrorMessage = "*Campo requerido")]

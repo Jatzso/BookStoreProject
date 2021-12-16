@@ -172,8 +172,6 @@ namespace BookStoreProject.Controllers
 
         public ActionResult Comentar(int Id, string Comment)
         {
-            var idReturn = Id;
-
             if (Comment != null)
             {
                 var nuevoComentario = new Comentario();
@@ -188,6 +186,7 @@ namespace BookStoreProject.Controllers
                 nuevoComentario.Fecha = DateTime.Now;
                 _context.Comentarios.Add(nuevoComentario);
                 _context.SaveChanges();
+
             }
             return RedirectToAction("Index", "Libro");
         }
