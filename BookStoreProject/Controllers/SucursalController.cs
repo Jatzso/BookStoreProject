@@ -144,6 +144,7 @@ namespace BookStoreProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = nameof(Rol.Administrador))]
         private bool SucursalExists(int id)
         {
             return _context.Sucursal.Any(e => e.Id == id);

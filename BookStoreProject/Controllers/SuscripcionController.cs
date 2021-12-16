@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookStoreProject.Context;
 using BookStoreProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookStoreProject.Controllers
 {
+    [Authorize]
     public class SuscripcionController : Controller
     {
         private readonly BookStoreDBContext _context;
@@ -35,6 +37,7 @@ namespace BookStoreProject.Controllers
 
 
         // GET: Suscripcion/Create
+        [Authorize(Roles = nameof(Rol.Administrador))]
         public IActionResult Create()
         {
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Id");
@@ -46,6 +49,7 @@ namespace BookStoreProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Create([Bind("Id,Email,UsuarioId")] Suscripcion suscripcion)
         {
             if (ModelState.IsValid)
@@ -60,6 +64,7 @@ namespace BookStoreProject.Controllers
 
 
         // GET: Suscripcion/Delete/5
+        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -81,6 +86,7 @@ namespace BookStoreProject.Controllers
         // POST: Suscripcion/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var suscripcion = await _context.Suscripciones.FindAsync(id);
@@ -89,6 +95,7 @@ namespace BookStoreProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = nameof(Rol.Administrador))]
         private bool SuscripcionExists(int id)
         {
             return _context.Suscripciones.Any(e => e.Id == id);

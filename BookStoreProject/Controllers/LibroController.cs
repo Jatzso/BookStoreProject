@@ -163,6 +163,7 @@ namespace BookStoreProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = nameof(Rol.Administrador))]
         private bool LibroExists(int id)
         {
             return _context.Libros.Any(e => e.Id == id);

@@ -32,6 +32,7 @@ namespace BookStoreProject.Controllers
         }
 
         // GET: Venta/Details/5
+        [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -109,6 +110,7 @@ namespace BookStoreProject.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = nameof(Rol.Administrador))]
         private bool VentaExists(int id)
         {
             return _context.Ventas.Any(e => e.Id == id);
