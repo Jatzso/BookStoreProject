@@ -7,7 +7,7 @@
 <p class="btnAgregar">
     @if (User.IsInRole(nameof(Rol.Administrador)))
     {
-       <a class="btnAbm" asp-action="Create">Agregar nuevo libro</a>
+        <a class="btnAbm" asp-action="Create">Agregar nuevo libro</a>
     }
 
     <!--***************************************************-->
@@ -15,26 +15,24 @@
 
     @using (Html.BeginForm())
     {
-<p>
-    <!--@Html.TextBox("SearchString")-->
-    <input class="buscador" id="SearchString" name="SearchString" type="text" value="" placeholder="Titulo de la obra..."/>
-    <input class="buscar" type="submit" value="Buscar"  placeholder="Titulo de la obra"/>
-    @if(Model.Count() < 1)
-                {
-                    <p class="notFound">¡Lo sentimos, no se ha encontrado nigún libro!</p>
-                }
-                else
-                {
-                    <p>Resultados: @Model.Count()</p>
-                }
-</p>
-    
+    <p>
+        <input class="buscador" id="cadenaBuscada" name="cadenaBuscada" type="text" value="" placeholder="Titulo del libro..." />
+        <input class="buscar" type="submit" value="Buscar" />
+    </p>
+    @if (Model.Count() < 1)
+    {
+        <p class="notFound">¡Lo sentimos, no se ha encontrado ningún libro!</p>
+    }
+    else
+    {
+        <p>Resultados: @Model.Count()</p>
+    }
 }
 
 
     <!--***************************************************-->
-   
- 
+
+
     <table class="table">
         <thead>
             <tr class="columna">
@@ -65,20 +63,21 @@
                     </td>
                     <td class="dropdown">
                         @if (User.IsInRole(nameof(Rol.Administrador)))
-                        {   
-                        <button class="dropbtn">Opciones</button>
-                        <div class="dropdown-content">
-                            <a class="btnAbm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                            <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
-                            <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                        </div>
-                        }else
                         {
-                          <button class="dropbtn">Opciones</button>
-                          <div class="dropdown-content">
-                              <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
-                          </div>
-                          
+                            <button class="dropbtn">Opciones</button>
+                            <div class="dropdown-content">
+                                <a class="btnAbm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
+                                <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <button class="dropbtn">Opciones</button>
+                            <div class="dropdown-content">
+                                <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
+                            </div>
+
                         }
                     </td>
                 </tr>

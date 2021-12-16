@@ -20,7 +20,26 @@ namespace BookStoreProject.Controllers
         {
             _context = context;
         }
+        
+        // GET: Venta
+        [Authorize(Roles = nameof(Rol.Administrador))]
+        public ActionResult Index(string cadenaBuscada)
+        {
 
+            var ventas = from v in _context.Ventas.Include(v => v.Libro)
+                             select v;
+
+            if (!String.IsNullOrEmpty(cadenaBuscada))
+            {
+                ventas = ventas.Where(v => v.Libro.Titulo.Contains(cadenaBuscada));
+            }
+
+            ViewBag.TotalVentas = ventas.Count();
+            ViewBag.TotalVendido = ventas.Select(v => v.Libro.Precio).Sum();
+            return View(ventas);
+        }
+
+        /*
         // GET: Venta
         [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Index()
@@ -30,6 +49,7 @@ namespace BookStoreProject.Controllers
             ViewBag.TotalVendido = _context.Ventas.Select(v => v.Libro.Precio).Sum();
             return View(await bookStoreDBContext.ToListAsync());
         }
+        */
 
         // GET: Venta/Details/5
         [Authorize(Roles = nameof(Rol.Administrador))]

@@ -22,15 +22,15 @@ namespace BookStoreProject.Controllers
         }
 
         //Buscador
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string cadenaBuscada)
         {
 
             var libros = from l in _context.Libros
                          select l;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(cadenaBuscada))
             {
-                libros = libros.Where(s => s.Titulo.Contains(searchString));
+                libros = libros.Where(s => s.Titulo.Contains(cadenaBuscada));
             }
 
             return View(libros);

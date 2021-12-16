@@ -7,6 +7,23 @@
 <p class="btnAgregar">
     <a class="btnAbm" asp-action="Create">Agregar nueva venta</a>
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        <input class="buscador" id="cadenaBuscada" name="cadenaBuscada" type="text" value="" placeholder="Venta por libro..." />
+        <input class="buscar" type="submit" value="Buscar" />
+    </p>
+    @if (Model.Count() < 1)
+    {
+        <p class="notFound">¡Lo sentimos, no se ha encontrado niguna venta!</p>
+    }
+    else
+    {
+        <p>Resultados: @Model.Count()</p>
+    }
+}
+
 <table class="table">
     <thead>
         <tr class="columna">
@@ -64,13 +81,13 @@
                         <a class="btnAbm" asp-action="Details" asp-route-id="@item.Id">Ver detalles</a>
                         <a class="btnAbm" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                     </div>
-                    
+
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<p class="totales">Cantidad libros vendidos: @ViewBag.TotalVentas</p> 
-<p class="totales">Venta total: $@ViewBag.TotalVendido</p> 
+<p class="totales">Cantidad libros vendidos: @ViewBag.TotalVentas</p>
+<p class="totales">Venta total: $@ViewBag.TotalVendido</p>
 
