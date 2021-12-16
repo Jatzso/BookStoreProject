@@ -8,21 +8,23 @@
     <a class="btnAbm" asp-action="Create">Agregar suscripcion</a>
 </p>
 
-@using (Html.BeginForm())
-{
-    <p>
-        <input class="buscador" id="cadenaBuscada" name="cadenaBuscada" type="text" value="" placeholder="Email de la suscripcion..." />
-        <input class="buscar" type="submit" value="Buscar" />
-    </p>
-    @if (Model.Count() < 1)
+<div class="formBuscador">
+    @using (Html.BeginForm())
     {
-        <p class="notFound">¡Lo sentimos, no se ha encontra ninguna suscripcion!</p>
+        <p>
+            <input class="buscador" id="cadenaBuscada" name="cadenaBuscada" type="text" value="" placeholder="Email de la suscripcion..." />
+            <input class="buscar" type="submit" value="Buscar" />
+        </p>
+        @if (Model.Count() < 1)
+        {
+            <p class="notFound">¡Lo sentimos, no se ha encontra ninguna suscripcion!</p>
+        }
+        else
+        {
+            <p>Resultados: @Model.Count()</p>
+        }
     }
-    else
-    {
-        <p>Resultados: @Model.Count()</p>
-    }
-}
+</div>
 
 <table class="table">
     <thead>

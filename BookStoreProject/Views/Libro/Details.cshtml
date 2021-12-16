@@ -59,18 +59,7 @@
 </form>
 <div>
     <a class="btnCompra" asp-controller="Venta" asp-action="Comprar" asp-route-id="@Model.Id">Comprar</a><br />
-    <a class="btnVerComentarios" asp-controller="Comentario" asp-action="Index" asp-route-id="@Model.Id">Ver comentarios</a><br />
 </div>
-
-<!--
-<ul>
-    foreach (var comentario in ViewData["Comments"] as IQueryable<Comentario>)
-    {
-        <li>
-            comentario.Comment;
-        </li>
-    }
-</ul>-->
 
 <h3>Comentarios</h3>
 <table class="table">

@@ -12,23 +12,23 @@
 
     <!--***************************************************-->
 
-
+<div class="formBuscador">
     @using (Html.BeginForm())
     {
-    <p>
-        <input class="buscador" id="cadenaBuscada" name="cadenaBuscada" type="text" value="" placeholder="Titulo del libro..." />
-        <input class="buscar" type="submit" value="Buscar" />
-    </p>
-    @if (Model.Count() < 1)
-    {
-        <p class="notFound">¡Lo sentimos, no se ha encontrado ningún libro!</p>
+        <p>
+            <input class="buscador" id="cadenaBuscada" name="cadenaBuscada" type="text" value="" placeholder="Titulo del libro..." />
+            <input class="buscar" type="submit" value="Buscar" />
+        </p>
+        @if (Model.Count() < 1)
+        {
+            <p class="notFound">¡Lo sentimos, no se ha encontrado ningún libro!</p>
+        }
+        else
+        {
+            <p>Resultados: @Model.Count()</p>
+        }
     }
-    else
-    {
-        <p>Resultados: @Model.Count()</p>
-    }
-}
-
+</div>
 
     <!--***************************************************-->
 

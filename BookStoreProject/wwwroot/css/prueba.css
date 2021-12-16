@@ -121,6 +121,12 @@
     margin-right: 135px;
 }
 
+#copyright {
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+}
+
 /*Buscador*/
 form p {
     font-family: Verdana;
@@ -152,6 +158,11 @@ form p {
 
 #cadenaBuscada {
     margin-top:15px;
+}
+
+.formBuscador {
+    font-family: Verdana;
+    font-weight: bold;
 }
 
 /*Tabla de Resultados*/
@@ -363,6 +374,9 @@ textarea {
 #divTextDanger {
     padding-top: 10px;
     padding-left: 43px;
+    font-family: Verdana;
+    font-style: italic;
+    font-weight: bold;
 }
 
 /*CRUD*/
@@ -602,5 +616,3 @@ textarea {
     border-radius: 30px;
     padding: 5px;
 }
-
-

@@ -21,15 +21,6 @@ namespace BookStoreProject.Controllers
             _context = context;
         }
 
-        // GET: Comentario
-        public async Task<IActionResult> Index(int id)
-        {
-            var bookStoreDBContext = _context.Comentarios.Include(c => c.Libro).Include(c => c.Usuario).Where(c => c.LibroId == id);
-
-            return View(await bookStoreDBContext.ToListAsync());
-        }
-
-
         // GET: Comentario/Delete/5
         [Authorize(Roles = nameof(Rol.Administrador))]
         public async Task<IActionResult> Delete(int? id)
