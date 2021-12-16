@@ -59,7 +59,7 @@ namespace BookStoreProject.Controllers
 
                         // Agregamos a la credencial el nombre de usuario
                         identidad.AddClaim(new Claim(ClaimTypes.Name, usuario));
-                        // Agregamos a la credencial el nombre del estudiante/administrador
+                        // Agregamos a la credencial el nombre del usuarioComun/administrador
                         identidad.AddClaim(new Claim(ClaimTypes.GivenName, user.Nombre));
                         // Agregamos a la credencial el Rol
                         identidad.AddClaim(new Claim(ClaimTypes.Role, user.Rol.ToString()));
@@ -117,7 +117,7 @@ namespace BookStoreProject.Controllers
                 {
                     if(!_context.Usuarios.Any(u => u.User == usuario.User))
                     {
-                        //usuario.Id = Guid.NewGuid();
+                        
                              if (seguridad.ValidarPass(pass))
                              {
                                   usuario.Contraseña = seguridad.EncriptarPass(pass);

@@ -39,17 +39,7 @@ namespace BookStoreProject.Controllers
             return View(ventas);
         }
 
-        /*
-        // GET: Venta
-        [Authorize(Roles = nameof(Rol.Administrador))]
-        public async Task<IActionResult> Index()
-        {
-            var bookStoreDBContext = _context.Ventas.Include(v => v.Libro);
-            ViewBag.TotalVentas = _context.Ventas.Count();
-            ViewBag.TotalVendido = _context.Ventas.Select(v => v.Libro.Precio).Sum();
-            return View(await bookStoreDBContext.ToListAsync());
-        }
-        */
+     
 
         // GET: Venta/Details/5
         [Authorize(Roles = nameof(Rol.Administrador))]

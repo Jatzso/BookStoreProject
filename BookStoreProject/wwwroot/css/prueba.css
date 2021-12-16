@@ -229,7 +229,6 @@ td {
     background-color:mediumaquamarine;
     color: white;
     box-shadow:10px 10px gray;
-    /*padding: 15px 18px;*/
 }
 
 #campoComentario {
@@ -423,7 +422,6 @@ textarea {
     background-color: mediumaquamarine;
     color: white;
     box-shadow: 10px 10px grey;
-    /* padding: 15px 18px;*/
 }
 
 .tituloEdite {
