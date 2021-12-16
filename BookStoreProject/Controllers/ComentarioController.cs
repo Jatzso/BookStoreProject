@@ -60,7 +60,7 @@ namespace BookStoreProject.Controllers
             var comentario = await _context.Comentarios.FindAsync(id);
             _context.Comentarios.Remove(comentario);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Libro");
         }
 
         [Authorize(Roles = nameof(Rol.Administrador))]

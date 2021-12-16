@@ -52,6 +52,9 @@ namespace BookStoreProject.Controllers
                 return NotFound();
             }
 
+            var comentarios = _context.Comentarios.Include(c => c.Libro).Include(c => c.Usuario).Where(c => c.LibroId == id);
+            ViewData["Comments"] = comentarios;
+
             return View(libro);
         }
        
@@ -93,6 +96,7 @@ namespace BookStoreProject.Controllers
             {
                 return NotFound();
             }
+
             return View(libro);
         }
 

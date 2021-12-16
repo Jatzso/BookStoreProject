@@ -9,7 +9,7 @@
     <div class="btnVolver">
         <a class="btnAbm" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
     </div>
-    
+
 }
 
 @{
@@ -61,3 +61,49 @@
     <a class="btnCompra" asp-controller="Venta" asp-action="Comprar" asp-route-id="@Model.Id">Comprar</a><br />
     <a class="btnVerComentarios" asp-controller="Comentario" asp-action="Index" asp-route-id="@Model.Id">Ver comentarios</a><br />
 </div>
+
+<!--
+<ul>
+    foreach (var comentario in ViewData["Comments"] as IQueryable<Comentario>)
+    {
+        <li>
+            comentario.Comment;
+        </li>
+    }
+</ul>-->
+
+<h3>Comentarios</h3>
+<table class="table">
+    <tbody>
+        @foreach (var comentario in ViewData["Comments"] as IQueryable<Comentario>)
+        {
+            @if(comentario == null)
+                {
+                    <p>Nadie a comentado este libro aún. ¡Sé el primero!</p>
+                }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => comentario.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => comentario.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => comentario.Usuario.Nombre)
+        </td>
+
+        <td class="dropdown">
+            @if (User.IsInRole(nameof(Rol.Administrador)))
+            {
+                <button class="dropbtn">Opciones</button>
+                <div class="dropdown-content">
+                    <a class="btnAbm" asp-controller="Comentario" asp-action="Delete" asp-route-id="@comentario.Id">Eliminar</a>
+                </div>
+            }
+        </td>
+
+
+    </tr>
+        }
+    </tbody>
+</table>
